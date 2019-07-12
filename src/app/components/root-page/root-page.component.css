@@ -1,0 +1,54 @@
+marquee{
+    font-size:20px;
+    font-weight: bold;
+    font-family:  Arial, Helvetica, sans-serif ;
+
+}
+
+header{
+	font-size:50px;
+	font-family:algerian;
+    text-align:center;
+    color: rgb(11, 3, 83);
+}
+
+
+footer, main{
+    font-size:25px;
+    text-align:center;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(63, 62, 62);
+    color: white;
+    text-align: center;
+  }
+
+  a{
+      color: white;
+      text-decoration: none;
+  }
+
+  a:hover {
+    color: rgb(85, 142, 248);
+    text-decoration: underline;
+  }
+
+  /* section{
+    background-image: url("https://q-ak.bstatic.com/images/hotel/max1280x900/124/124820342.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+} */
+
+
+ section {
+
+    background-image: url("/assets/images/bg.jpg"); /* The image used */
+    height: 100%; /*700px;  You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+  }
