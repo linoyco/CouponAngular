@@ -16,10 +16,7 @@ import { RootPageComponent } from './components/root-page/root-page.component';
     LoginComponent,
     RootPageComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [RootPageComponent]
 })

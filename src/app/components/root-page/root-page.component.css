@@ -1,54 +1,113 @@
-marquee{
-    font-size:20px;
+/* section {
+  height: 100%;
+  /* border: 2px solid black; 
+  text-align: center;
+  /* box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 13% 80% 7%;
+  grid-template-columns: repeat(12, 1fr); */
+
+  /*background-image: url("/assets/images/bg.jpg"); The image used */
+  /*background-position: center; /* Center the image */
+  /*background-repeat: no-repeat; /* Do not repeat the image */
+  /*background-size: cover; /* Resize the background image to cover the entire container 
+}
+
+/* marquee{
+  grid-column: span 12;
+    /* font-size:20px;
     font-weight: bold;
     font-family:  Arial, Helvetica, sans-serif ;
 
-}
+} */
 
-header{
-	font-size:50px;
+/* header{
+  grid-column: span 12;
+	/* font-size:50px;
 	font-family:algerian;
-    text-align:center;
-    color: rgb(11, 3, 83);
-}
+  color: rgb(11, 3, 83); */
+  /* text-align:center; 
 
+} */
 
-footer, main{
-    font-size:25px;
-    text-align:center;
-}
+/* main{
+  grid-column: span 10;
+  /* font-size:25px; 
+} */
 
-footer {
+/* footer {
+  grid-column: span 12;
+  font-size:25px;
     position: fixed;
     bottom: 0;
     width: 100%;
     background-color: rgb(63, 62, 62);
     color: white;
-    text-align: center;
-  }
+    /* text-align: center; 
+  } */
 
-  a{
+  /* a{
       color: white;
       text-decoration: none;
-  }
+  } */
 
-  a:hover {
+  /* a:hover {
     color: rgb(85, 142, 248);
     text-decoration: underline;
+  } */
+
+section {
+  height: 100%;
+  border: 1px solid black; 
+  text-align: center;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 5% 10% 80% 5%;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+marquee{
+  grid-column: span 12;
+  border: 1px solid black; 
+  font-size:20px;
+  font-weight: bold;
+  font-family:  Arial, Helvetica, sans-serif ;
+}
+
+header{
+  grid-column: span 12;
+  border: 1px solid black; 
+  font-size:50px;
+	font-family:algerian;
+  color: rgb(11, 3, 83);
+}
+
+aside{
+  grid-column: span 2;
+  border: 1px solid black; 
+}
+
+main{
+  grid-column: span 10;
+  border: 1px solid black; 
+}
+
+footer{
+  grid-column: span 12;
+  font-size:25px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(63, 62, 62);
+  color: white;
+}
+
+a{
+  color: white;
+  text-decoration: none;
   }
 
-  /* section{
-    background-image: url("https://q-ak.bstatic.com/images/hotel/max1280x900/124/124820342.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
-} */
-
-
- section {
-
-    background-image: url("/assets/images/bg.jpg"); /* The image used */
-    height: 100%; /*700px;  You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
+a:hover {
+  color: rgb(85, 142, 248);
+  text-decoration: underline;
   }
