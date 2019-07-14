@@ -7,6 +7,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RootPageComponent } from './components/root-page/root-page.component';
+import { HeaderComponent } from './components/root-page/header/header.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RootPageComponent } from './components/root-page/root-page.component';
     CompanyComponent,
     CustomerComponent,
     LoginComponent,
-    RootPageComponent
+    RootPageComponent,
+    HeaderComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
