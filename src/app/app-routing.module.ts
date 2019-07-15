@@ -5,9 +5,9 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CompanyComponent } from './components/company/company.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent},
-  { path: 'customer', component: CustomerComponent},
-  { path: 'company', component: CompanyComponent}
+  { path: "admin", component: AdminComponent},
+  { path: "customer", component: CustomerComponent},
+  { path: "company", component: CompanyComponent}
 ];
 
 @NgModule({
