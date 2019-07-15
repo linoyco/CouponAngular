@@ -9,7 +9,10 @@ export class RootPageComponent implements OnInit {
 
   constructor() { }
 
+  public currentDate: Date;
+
   ngOnInit() {
+    this.currentDate = new Date;
   }
 
 }

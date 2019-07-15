@@ -21,7 +21,12 @@
       <button type="reset" class="button"	>RESET	<i class="fa fa-eraser" style="font-size:30px;"></i></button></h3>
     
     </form>
-    <img src="/assets/images/coupon.jpg">
+    <img src="/assets/images/coupon.jpg" [width]="imageWidth">
   </div>
+<div>
+  <button (click)="decreaseWidth()">-</button>
+  <button (click)="resetWidth()">=</button>
+  <button (click)="increaseWidth()">+</button>
 
+</div>
 </section>
