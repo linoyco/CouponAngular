@@ -7,7 +7,8 @@ import { CompanyComponent } from './components/company/company.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RootPageComponent } from './components/root-page/root-page.component';
-import { HeaderComponent } from './components/root-page/header/header.component';
+import { HeaderRootComponent } from './components/root-page/header-root/header-root.component';
+import { AsideRootComponent } from './components/root-page/aside-root/aside-root.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HeaderComponent } from './components/root-page/header/header.component'
     CustomerComponent,
     LoginComponent,
     RootPageComponent,
-    HeaderComponent
+    HeaderRootComponent,
+    AsideRootComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

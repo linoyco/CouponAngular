@@ -77,9 +77,9 @@ marquee{
 header{
   grid-column: span 12;
   border: 1px solid black; 
-  font-size:50px;
+  /* font-size:50px;
 	font-family:algerian;
-  color: rgb(11, 3, 83);
+  color: rgb(11, 3, 83); */
 }
 
 aside{
