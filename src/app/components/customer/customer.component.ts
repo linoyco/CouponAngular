@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-customer',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor() { }
+  public constructor(private title: Title) { }
 
   ngOnInit() {
+    this.title.setTitle("customer page")
   }
 
 }

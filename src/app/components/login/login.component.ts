@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,10 @@ export class LoginComponent implements OnInit {
 
 public imageWidth: number;
 
-  constructor() { }
+  public constructor(private title: Title) {   }
 
   ngOnInit() {
+    this.title.setTitle("login to coupon")
     this.imageWidth=250;
   }
 
