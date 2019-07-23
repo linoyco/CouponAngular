@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { AdminServiceService } from 'src/app/services/admin-service.service';
+import { Customer } from 'src/app/models/customer';
 
 @Component({
   selector: 'app-admin',
@@ -8,10 +10,13 @@ import { Title } from '@angular/platform-browser';
 })
 export class AdminComponent implements OnInit {
 
-  public constructor(private title: Title) { }
+  public customers: Customer[];
+
+  public constructor(private title: Title, private adminService: AdminServiceService) { }
 
   ngOnInit() {
     this.title.setTitle("admin page")
+    this.customers = this.adminService.getAllCustomers();
   }
 
 }

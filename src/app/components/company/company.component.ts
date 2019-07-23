@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { CompanyServiceService } from 'src/app/services/company-service.service';
 
 @Component({
   selector: 'app-company',
@@ -8,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CompanyComponent implements OnInit {
 
-  public constructor(private title: Title) { }
+  public constructor(private title: Title, private companyService: CompanyServiceService) { }
 
   ngOnInit() {
     this.title.setTitle("company page")

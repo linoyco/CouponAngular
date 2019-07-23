@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Customer } from '../models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -43,10 +44,14 @@ export class AdminServiceService {
 
   }
 
-  public getAllCustomers(){
-
+  public getAllCustomers(): Customer[] {
+    const arr: Customer[] =[];
+    arr.push(new Customer(23, "Linoy", "Ll123"));
+    arr.push(new Customer(45, "Matan", "Mm123"));
+    arr.push(new Customer(63, "Moshe", "Ss123"));
+  return arr;
   }
 
 
-  
+
 }
