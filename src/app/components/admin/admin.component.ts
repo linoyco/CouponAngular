@@ -16,7 +16,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle("admin page")
-    this.customers = this.adminService.getAllCustomers();
+
+    
   }
 
 }

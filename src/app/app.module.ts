@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import{HttpClientModule}from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
@@ -19,6 +22,8 @@ import { RemoveCustomerComponent } from './components/admin/remove-customer/remo
 import { UpdateCustomerComponent } from './components/admin/update-customer/update-customer.component';
 import { GetCustomerComponent } from './components/admin/get-customer/get-customer.component';
 import { GetAllCustomersComponent } from './components/admin/get-all-customers/get-all-customers.component';
+import { HttpClient } from '@angular/common/http';
+import { AdminServiceService } from './services/admin-service.service';
 
 @NgModule({
   declarations: [
@@ -40,8 +45,8 @@ import { GetAllCustomersComponent } from './components/admin/get-all-customers/g
     GetCustomerComponent,
     GetAllCustomersComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
+  providers: [AdminServiceService],
   bootstrap: [RootPageComponent]
 })
 export class AppModule { }
