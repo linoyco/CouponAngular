@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import{HttpClientModule}from "@angular/common/http";
+import{HttpClientModule, HTTP_INTERCEPTORS}from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 
 
@@ -24,6 +24,7 @@ import { GetCustomerComponent } from './components/admin/get-customer/get-custom
 import { GetAllCustomersComponent } from './components/admin/get-all-customers/get-all-customers.component';
 import { HttpClient } from '@angular/common/http';
 import { AdminServiceService } from './services/admin-service.service';
+import { HttpRequestInterceptor } from './HttpRequestInterceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,10 @@ import { AdminServiceService } from './services/admin-service.service';
     GetAllCustomersComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
-  providers: [AdminServiceService],
+  providers: [
+    // AdminServiceService
+    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
+  ],
   bootstrap: [RootPageComponent]
 })
 export class AppModule { }
