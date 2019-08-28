@@ -54,7 +54,7 @@ export class AdminServiceService {
   // }
 
   public getAllCustomers():Observable<Customer[]>{
-    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers",{withCredentials:true});
+    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers");
   }
 
 
