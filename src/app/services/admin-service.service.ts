@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AdminServiceService {
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
   constructor(private http:HttpClient) { }
 
@@ -54,7 +60,7 @@ export class AdminServiceService {
   // }
 
   public getAllCustomers():Observable<Customer[]>{
-    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers");
+    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers",{responseType:'json',  withCredentials:true} );
   }
 
 

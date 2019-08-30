@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { LoginUser } from '../components/login/LoginUser';
@@ -7,6 +7,8 @@ import { LoginUser } from '../components/login/LoginUser';
 @Injectable({providedIn: 'root'})
 
 export class ConnectionServiceService {
+
+ 
 
   private _urlLogin = 'http://localhost:8080/CouponSystemREST/rest/LoginService/login';
 
