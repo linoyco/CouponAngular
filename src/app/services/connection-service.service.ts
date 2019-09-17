@@ -10,7 +10,7 @@ export class ConnectionServiceService {
 
  
 
-  private _urlLogin = 'http://localhost:8080/CouponSystemREST/rest/LoginService/login';
+  private _urlLogin = 'http://localhost:8080/Login/login';
 
   constructor(private http: HttpClient) { 
 
