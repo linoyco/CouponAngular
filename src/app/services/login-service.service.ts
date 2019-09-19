@@ -139,4 +139,45 @@ export class LoginServiceService {
     return this.http.post(url, user, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   }
 
+  public getUserInfo() {
+    return this.userInfo;
+  }
+  public setUserInfo(userObject) {
+    this.userInfo = userObject;
+  }
+
+  public checkInfo() {
+    if (this.userInfo === null) {
+      if (this.getCompanyUser()) {
+        let url = this.urlsService.getCompanyUrl() + "getThisCompany";
+
+        this.http.get(url, { observe: 'response' }).subscribe(
+          res => {
+            this.userInfo = res.body;
+          },
+          error => {
+            let res: HttpErrorResponse = error;
+            if (res.status === ResponseCodes.BAD_REQUEST || res.status === ResponseCodes.NO_CONTENT || res.status === ResponseCodes.UNAUTHORIZED) { console.log(res.message); this.badLogin(); }
+            else { console.log(res.message) }
+          });
+      }
+      else if (this.getCustomerUser()) {
+        let url = this.urlsService.getCustomerUrl() + "getThisCustomer";
+
+        this.http.get(url, { observe: 'response' }).subscribe(
+          res => {
+            this.userInfo = res.body;
+          },
+          error => {
+            let res: HttpErrorResponse = error;
+            if (res.status === ResponseCodes.BAD_REQUEST || res.status === ResponseCodes.NO_CONTENT || res.status === ResponseCodes.UNAUTHORIZED) { console.log(res.message); this.badLogin(); }
+            else { console.log(res.message) }
+          });
+      }
+      else {
+        this.badLogin();
+      }
+    }
+  }
+
 }
