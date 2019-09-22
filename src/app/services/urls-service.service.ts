@@ -12,6 +12,8 @@ export class UrlsServiceService {
   private customerMenuUrl = "http://localhost:8080/customer/";
   private loginUrl = "http://localhost:8080/Login/login/";
   private logoutUrl = "http://localhost:8080/Login/login/";
+  private allCouponsUrl = "http://localhost:8080/";
+
 
   public getAdminUrl() {
     return this.adminMenuUrl;
@@ -28,6 +30,10 @@ export class UrlsServiceService {
 
   public getLogoutUrl(){
     return this.logoutUrl;
+  }
+
+  public getAllCouponsUrl(){
+    return this.allCouponsUrl;
   }
 
 }

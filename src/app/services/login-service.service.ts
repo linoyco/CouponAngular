@@ -15,6 +15,7 @@ export class LoginServiceService {
 
   private userInfo = null;
 
+
   private userAdmin = JSON.parse(localStorage.getItem("userAdmin") || 'false');
   private userCompany = JSON.parse(localStorage.getItem("userCompany") || 'false');
   private userCustomer = JSON.parse(localStorage.getItem("userCustomer") || 'false');

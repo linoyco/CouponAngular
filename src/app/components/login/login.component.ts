@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { LoginUser } from './loginUser';
 import { ConnectionServiceService } from 'src/app/services/connection-service.service';
 import { Router } from '@angular/router';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 
 @Component({
   selector: 'app-login',
@@ -41,45 +43,37 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginUser.username = this.userLoginForm.value.username;
-    this.loginUser.password = this.userLoginForm.value.password;
-    this.loginUser.clientType = this.userLoginForm.value.clientType;
-    this.obsSubscription = this.connectionService.login(this.loginUser).subscribe(
-      (data) => {
-        console.log(data);
-        this.result = <IsetCookie>{};
-        this.result = data;
-        if (this.result == null) {
-          alert("Login Failed, please try again");
-          this.router.navigate(["/login"])
+    let username = this.userLoginForm.value.username;
+    let password = this.userLoginForm.value.password;
+    let clientType = this.userLoginForm.value.clientType;
+    this.connectionService.login(username, password, clientType).subscribe(
+      res => {
+        if (clientType === "ADMIN") { //navigate to admin page
+          if (res.status === ResponseCodes.OK) { this.connectionService.token = res.body; console.log("bye"); console.log(this.connectionService.token)}
+          else { console.log(res.status); }
         }
-        else {
-          sessionStorage.setItem('Cookie', this.result.value as string)
-          switch (this.result.comment) {
-            case "ADMIN": {
-              sessionStorage.setItem('clientType', this.result.comment)
-              this.router.navigate(["/admin"])
-              break;
-            }
-            case "COMPANY":
-              sessionStorage.setItem('clientType', this.result.comment)
-              this.router.navigate(["/company"])
-              break;
-            case "CUSTOMER":
-              sessionStorage.setItem('clientType', this.result.comment)
-              this.router.navigate(["/customer"])
-              break;
-            default:
-          }
-        }
-      },
 
-      (err) => { console.log(err); alert(err) }
+        // if (clientType === "admin") { //navigate to admin page
+        //   if (res.status === ResponseCodes.OK) { console.log(res.body) }
+        //   else { console.log(res.status); }
+        // }
+        // if (clientType === "admin") { //navigate to admin page
+        //   if (res.status === ResponseCodes.OK) { console.log(res.body) }
+        //   else { console.log(res.status); }
+        // }
+      },
+      err => {
+        let error: HttpErrorResponse = err;
+        if (error.error === ResponseCodes.UNAUTHORIZED) { console.log("unautorized!!!") }
+        else { console.log(error.error) }
+      }
     );
+
+
   }
 
   ngOnDestroy(): void {
-    if(this.obsSubscription != null){
+    if (this.obsSubscription != null) {
       this.obsSubscription.unsubscribe();
     }
   }
