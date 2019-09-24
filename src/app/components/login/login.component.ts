@@ -48,19 +48,19 @@ export class LoginComponent implements OnInit {
     let clientType = this.userLoginForm.value.clientType;
     this.connectionService.login(username, password, clientType).subscribe(
       res => {
-        if (clientType === "ADMIN") { //navigate to admin page
+        if (clientType === "ADMIN") { this.router.navigate(["/admin"]) //navigate to admin page
           if (res.status === ResponseCodes.OK) { this.connectionService.token = res.body; console.log("bye"); console.log(this.connectionService.token)}
           else { console.log(res.status); }
         }
 
-        // if (clientType === "admin") { //navigate to admin page
-        //   if (res.status === ResponseCodes.OK) { console.log(res.body) }
-        //   else { console.log(res.status); }
-        // }
-        // if (clientType === "admin") { //navigate to admin page
-        //   if (res.status === ResponseCodes.OK) { console.log(res.body) }
-        //   else { console.log(res.status); }
-        // }
+        if (clientType === "customer") { this.router.navigate(["/customer"])//navigate to customer page
+          if (res.status === ResponseCodes.OK) { console.log(res.body) }
+          else { console.log(res.status); }
+        }
+        if (clientType === "company") {  this.router.navigate(["/company"])//navigate to company page
+          if (res.status === ResponseCodes.OK) { console.log(res.body) }
+          else { console.log(res.status); }
+        }
       },
       err => {
         let error: HttpErrorResponse = err;

@@ -24,15 +24,4 @@ export class ConnectionServiceService {
     return this.http.post(url, null, {observe : 'response', responseType: 'text'});
   }
 
-  // login(user: LoginUser){
-  //   return this.http.post<any>(this._urlLogin, user).pipe(
-  //     catchError(
-  //       (err: HttpErrorResponse)=>{
-  //         console.log(err)
-  //         return throwError('error in http login')
-  //       }
-  //     )
-
-  //   )
-  // }
 }
