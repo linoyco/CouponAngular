@@ -1,0 +1,21 @@
+div{
+    overflow: scroll;
+    width: 500px;
+    height: 330px;
+    border: 3px solid rgb(0, 0, 0);
+    margin-left: 250px;
+}
+
+option{
+    font-weight: bold;
+    font-family:  Arial, Helvetica, sans-serif ;
+
+}
+h1{
+    font-family:  Arial, Helvetica, sans-serif ;
+    text-decoration: underline;
+}
+
+option:hover {
+    background-color: rgb(184, 184, 184);
+  }

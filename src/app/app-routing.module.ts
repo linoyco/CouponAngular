@@ -17,59 +17,72 @@ import { UpdateCustomerComponent } from './components/admin/update-customer/upda
 import { CustomerGuardService } from './services/customer-guard.service';
 import { AdminGuardService } from './services/admin-guard.service';
 import { CompanyGuardService } from './services/company-guard.service';
+import { GetAllCustomerCouponsComponent } from './components/customer/get-all-customer-coupons/get-all-customer-coupons.component';
+import { GetCouponsByPriceComponent } from './components/customer/get-coupons-by-price/get-coupons-by-price.component';
+import { GetCouponsByTypeComponent } from './components/customer/get-coupons-by-type/get-coupons-by-type.component';
+import { PurchaseCouponComponent } from './components/customer/purchase-coupon/purchase-coupon.component';
+import { CreateCouponComponent } from './components/company/create-coupon/create-coupon.component';
+import { DeleteCouponComponent } from './components/company/delete-coupon/delete-coupon.component';
+import { GetAllCompanyCouponsComponent } from './components/company/get-all-company-coupons/get-all-company-coupons.component';
+import { GetCompanyByIdComponent } from './components/company/get-company-by-id/get-company-by-id.component';
+import { GetCouponByEndDateComponent } from './components/company/get-coupon-by-end-date/get-coupon-by-end-date.component';
+import { GetCouponByPriceComponent } from './components/company/get-coupon-by-price/get-coupon-by-price.component';
+import { GetCouponByTypeComponent } from './components/company/get-coupon-by-type/get-coupon-by-type.component';
+import { UpdateCouponComponent } from './components/company/update-coupon/update-coupon.component';
+import { ViewIncomeByCompanyIdComponent } from './components/company/view-income-by-company-id/view-income-by-company-id.component';
+import { GetAllIncomeComponent } from './components/admin/get-all-income/get-all-income.component';
+import { GetIncomeByCompanyIdComponent } from './components/admin/get-income-by-company-id/get-income-by-company-id.component';
+import { GetIncomeByCustomerIdComponent } from './components/admin/get-income-by-customer-id/get-income-by-customer-id.component';
 
 const routes: Routes = [
         //***global***
-  { path: "admin", //canActivate:[AdminGuardService],
-          component: AdminComponent},
-  { path: "customer", //canActivate:[CustomerGuardService], 
-          component: CustomerComponent},
-  { path: "company", //canActivate:[CompanyGuardService], 
-          component: CompanyComponent},
-  { path: "login", component: LoginComponent},
+        { path: "admin", //canActivate:[AdminGuardService],
+                component: AdminComponent },
+        { path: "customer", //canActivate:[CustomerGuardService], 
+                component: CustomerComponent },
+        { path: "company", //canActivate:[CompanyGuardService], 
+                component: CompanyComponent },
+        { path: "login", component: LoginComponent },
 
-//   { path: "", redirectTo: "/login", pathMatch: "full"},
-//   { path: "**", redirectTo: "/login", pathMatch: "full"},
+        // { path: "", redirectTo: "/login", pathMatch: "full"},
+        // { path: "**", redirectTo: "/login", pathMatch: "full"},
 
         //***admin Router
-  { path: "create-company", component: CreateCompanyComponent},
-  { path: "create-customer", component: CreateCustomerComponent},
-  { path: "get-all-companies", component: GetAllCompaniesComponent},
-  { path: "get-all-customers", component: GetAllCustomersComponent},
-  { path: "get-company", component: GetCompanyComponent},
-  { path: "get-customer", component: GetCustomerComponent},
-  { path: "remove-company", component: RemoveCompanyComponent},
-  { path: "remove-customer", component: RemoveCustomerComponent},
-  { path: "update-company", component: UpdateCompanyComponent},
-  { path: "update-customer", component: UpdateCustomerComponent},
+        { path: "admin/create-company", component: CreateCompanyComponent },
+        { path: "admin/create-customer", component: CreateCustomerComponent },
+        { path: "admin/get-all-companies", component: GetAllCompaniesComponent },
+        { path: "admin/get-all-customers", component: GetAllCustomersComponent },
+        { path: "admin/get-company", component: GetCompanyComponent },
+        { path: "admin/get-customer", component: GetCustomerComponent },
+        { path: "admin/remove-company", component: RemoveCompanyComponent },
+        { path: "admin/remove-customer", component: RemoveCustomerComponent },
+        { path: "admin/update-company", component: UpdateCompanyComponent },
+        { path: "admin/update-customer", component: UpdateCustomerComponent },
+        { path: "admin/get-all-income", component: GetAllIncomeComponent },
+        { path: "admin/get-income-by-company-id", component: GetIncomeByCompanyIdComponent },
+        { path: "admin/get-income-by-customer-id", component: GetIncomeByCustomerIdComponent },
 
-          //***company Router
-  { path: "admin/create-company", component: CreateCompanyComponent},
-  { path: "admin/create-customer", component: CreateCustomerComponent},
-  { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
-  { path: "admin/get-all-customers", component: GetAllCustomersComponent},
-  { path: "admin/get-company", component: GetCompanyComponent},
-  { path: "admin/get-customer", component: GetCustomerComponent},
-  { path: "admin/remove-company", component: RemoveCompanyComponent},
-  { path: "admin/remove-customer", component: RemoveCustomerComponent},
-  { path: "admin/update-company", component: UpdateCompanyComponent},
-  { path: "admin/update-customer", component: UpdateCustomerComponent},
 
-          //***customer Router
-  { path: "admin/create-company", component: CreateCompanyComponent},
-  { path: "admin/create-customer", component: CreateCustomerComponent},
-  { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
-  { path: "admin/get-all-customers", component: GetAllCustomersComponent},
-  { path: "admin/get-company", component: GetCompanyComponent},
-  { path: "admin/get-customer", component: GetCustomerComponent},
-  { path: "admin/remove-company", component: RemoveCompanyComponent},
-  { path: "admin/remove-customer", component: RemoveCustomerComponent},
-  { path: "admin/update-company", component: UpdateCompanyComponent},
-  { path: "admin/update-customer", component: UpdateCustomerComponent},
+        //***company Router
+        { path: "create-coupon", component: CreateCouponComponent },
+        { path: "delete-coupon", component: DeleteCouponComponent },
+        { path: "get-all-company-coupons", component: GetAllCompanyCouponsComponent },
+        { path: "get-company-by-id", component: GetCompanyByIdComponent },
+        { path: "get-coupon-by-end-date", component: GetCouponByEndDateComponent },
+        { path: "get-coupon-by-price", component: GetCouponByPriceComponent },
+        { path: "get-coupon-by-type", component: GetCouponByTypeComponent },
+        { path: "update-coupon", component: UpdateCouponComponent },
+        { path: "view-income-by-company-id", component: ViewIncomeByCompanyIdComponent },
+
+        //***customer Router
+        { path: "get-all-customer-coupons", component: GetAllCustomerCouponsComponent },
+        { path: "get-coupons-by-price", component: GetCouponsByPriceComponent },
+        { path: "get-coupons-by-type", component: GetCouponsByTypeComponent },
+        { path: "purchase-coupon", component: PurchaseCouponComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+        imports: [RouterModule.forRoot(routes)],
+        exports: [RouterModule]
 })
 export class AppRoutingModule { }
