@@ -19,3 +19,8 @@ h1{
 option:hover {
     background-color: rgb(184, 184, 184);
   }
+
+  .grid-container{
+    display: grid;
+    grid-row-gap: 15px;
+  }

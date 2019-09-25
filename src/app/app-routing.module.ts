@@ -64,21 +64,21 @@ const routes: Routes = [
 
 
         //***company Router
-        { path: "create-coupon", component: CreateCouponComponent },
-        { path: "delete-coupon", component: DeleteCouponComponent },
-        { path: "get-all-company-coupons", component: GetAllCompanyCouponsComponent },
-        { path: "get-company-by-id", component: GetCompanyByIdComponent },
-        { path: "get-coupon-by-end-date", component: GetCouponByEndDateComponent },
-        { path: "get-coupon-by-price", component: GetCouponByPriceComponent },
-        { path: "get-coupon-by-type", component: GetCouponByTypeComponent },
-        { path: "update-coupon", component: UpdateCouponComponent },
-        { path: "view-income-by-company-id", component: ViewIncomeByCompanyIdComponent },
+        { path: "company/create-coupon", component: CreateCouponComponent },
+        { path: "company/delete-coupon", component: DeleteCouponComponent },
+        { path: "company/get-all-company-coupons", component: GetAllCompanyCouponsComponent },
+        { path: "company/get-company-by-id", component: GetCompanyByIdComponent },
+        { path: "company/get-coupon-by-end-date", component: GetCouponByEndDateComponent },
+        { path: "company/get-coupon-by-price", component: GetCouponByPriceComponent },
+        { path: "company/get-coupon-by-type", component: GetCouponByTypeComponent },
+        { path: "company/update-coupon", component: UpdateCouponComponent },
+        { path: "company/view-income-by-company-id", component: ViewIncomeByCompanyIdComponent },
 
         //***customer Router
-        { path: "get-all-customer-coupons", component: GetAllCustomerCouponsComponent },
-        { path: "get-coupons-by-price", component: GetCouponsByPriceComponent },
-        { path: "get-coupons-by-type", component: GetCouponsByTypeComponent },
-        { path: "purchase-coupon", component: PurchaseCouponComponent },
+        { path: "customer/get-all-customer-coupons", component: GetAllCustomerCouponsComponent },
+        { path: "customer/get-coupons-by-price", component: GetCouponsByPriceComponent },
+        { path: "customer/get-coupons-by-type", component: GetCouponsByTypeComponent },
+        { path: "customer/purchase-coupon", component: PurchaseCouponComponent },
 ];
 
 @NgModule({
