@@ -1,28 +1,41 @@
 <section>
-
-
   <p>
-    ***admin page***!
+    *** Welcome admin! ***
   </p>
-  <h2>Choose an option:</h2>
+  <h2>Choose an option</h2>
 
-  <select>
-    <option value="createCompany">Add new company</option>
-    <option value="deleteCompany">Delete company</option>
-    <option value="updateCompany">Update company</option>
-    <option value="getAllCompanies">View all companies</option>
-    <option value="companyById">View one company by id</option>
-    <option value="createCustomer">Add new customer</option>
-    <option value="deleteCustomer">Delete customer</option>
-    <option value="updateCustomer">Update customer</option>
-    <option value="getAllCustomers">View all customers</option>
-    <option value="customerById">View one customer by id</option>
-    <option value="allIncome"></option>
+  <div>
+    <h1>Company options:</h1>
+    <option routerLink="create-company" routerLinkActive="active-link">Add new company</option>
+    <option routerLink="update-company" routerLinkActive="active-link">Update company</option>
+    <option routerLink="remove-company" routerLinkActive="active-link">Delete company</option>
+    <option routerLink="get-company" routerLinkActive="active-link">View one company by id</option>
+    <option routerLink="get-all-companies" routerLinkActive="active-link">View all companies</option>
+
+    <h1>Customer options:</h1>
+    <option routerLink="create-customer" routerLinkActive="active-link">Add new customer</option>
+    <option routerLink="update-customer" routerLinkActive="active-link">Update customer</option>
+    <option routerLink="remove-customer" routerLinkActive="active-link">Delete customer</option>
+    <option routerLink="get-customer" routerLinkActive="active-link">View one customer by id</option>
+    <option routerLink="get-all-customers" routerLinkActive="active-link">View all customers</option>
+
+    <h1>Income $ options:</h1>
+    <option routerLink="" routerLinkActive="active-link"></option>
+    <option routerLink="" routerLinkActive="active-link"></option>
+    <option routerLink="" routerLinkActive="active-link"></option>
+    <option routerLink="" routerLinkActive="active-link"></option>
+    <option routerLink="" routerLinkActive="active-link"></option>
+
+
+  </div>
+
+
+  <!-- <select>
     <option value="viewAllIncome"></option>
     <option value="viewIncomeByCompanyId"></option>
     <option value="viewIncomeByCustomerId"></option>
   </select>
 
-  <button type="submit">Select</button>
+  <button type="submit">Select</button> -->
 
 </section>

@@ -25,6 +25,22 @@ import { GetAllCustomersComponent } from './components/admin/get-all-customers/g
 import { HttpClient } from '@angular/common/http';
 import { AdminServiceService } from './services/admin-service.service';
 import { HttpRequestInterceptor } from './HttpRequestInterceptor';
+import { GetAllIncomeComponent } from './components/admin/get-all-income/get-all-income.component';
+import { GetIncomeByCompanyIdComponent } from './components/admin/get-income-by-company-id/get-income-by-company-id.component';
+import { GetIncomeByCustomerIdComponent } from './components/admin/get-income-by-customer-id/get-income-by-customer-id.component';
+import { CreateCouponComponent } from './components/company/create-coupon/create-coupon.component';
+import { UpdateCouponComponent } from './components/company/update-coupon/update-coupon.component';
+import { DeleteCouponComponent } from './components/company/delete-coupon/delete-coupon.component';
+import { GetCompanyByIdComponent } from './components/company/get-company-by-id/get-company-by-id.component';
+import { GetAllCompanyCouponsComponent } from './components/company/get-all-company-coupons/get-all-company-coupons.component';
+import { GetCouponByTypeComponent } from './components/company/get-coupon-by-type/get-coupon-by-type.component';
+import { GetCouponByPriceComponent } from './components/company/get-coupon-by-price/get-coupon-by-price.component';
+import { GetCouponByEndDateComponent } from './components/company/get-coupon-by-end-date/get-coupon-by-end-date.component';
+import { ViewIncomeByCompanyIdComponent } from './components/company/view-income-by-company-id/view-income-by-company-id.component';
+import { PurchaseCouponComponent } from './components/customer/purchase-coupon/purchase-coupon.component';
+import { GetAllCustomerCouponsComponent } from './components/customer/get-all-customer-coupons/get-all-customer-coupons.component';
+import { GetCouponsByTypeComponent } from './components/customer/get-coupons-by-type/get-coupons-by-type.component';
+import { GetCouponsByPriceComponent } from './components/customer/get-coupons-by-price/get-coupons-by-price.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +61,22 @@ import { HttpRequestInterceptor } from './HttpRequestInterceptor';
     UpdateCustomerComponent,
     GetCustomerComponent,
     GetAllCustomersComponent,
+    GetAllIncomeComponent,
+    GetIncomeByCompanyIdComponent,
+    GetIncomeByCustomerIdComponent,
+    CreateCouponComponent,
+    UpdateCouponComponent,
+    DeleteCouponComponent,
+    GetCompanyByIdComponent,
+    GetAllCompanyCouponsComponent,
+    GetCouponByTypeComponent,
+    GetCouponByPriceComponent,
+    GetCouponByEndDateComponent,
+    ViewIncomeByCompanyIdComponent,
+    PurchaseCouponComponent,
+    GetAllCustomerCouponsComponent,
+    GetCouponsByTypeComponent,
+    GetCouponsByPriceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
   providers: [

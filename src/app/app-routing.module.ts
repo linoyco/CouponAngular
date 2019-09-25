@@ -19,6 +19,7 @@ import { AdminGuardService } from './services/admin-guard.service';
 import { CompanyGuardService } from './services/company-guard.service';
 
 const routes: Routes = [
+        //***global***
   { path: "admin", //canActivate:[AdminGuardService],
           component: AdminComponent},
   { path: "customer", //canActivate:[CustomerGuardService], 
@@ -27,18 +28,44 @@ const routes: Routes = [
           component: CompanyComponent},
   { path: "login", component: LoginComponent},
 
-  { path: "", redirectTo: "/login", pathMatch: "full"},
-  { path: "**", redirectTo: "/login", pathMatch: "full"},
-  // { path: "admin/create-company", component: CreateCompanyComponent},
-  // { path: "admin/create-customer", component: CreateCustomerComponent},
-  // { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
-  // { path: "admin/get-all-customers", component: GetAllCustomersComponent},
-  // { path: "admin/get-company", component: GetCompanyComponent},
-  // { path: "admin/get-customer", component: GetCustomerComponent},
-  // { path: "admin/remove-company", component: RemoveCompanyComponent},
-  // { path: "admin/remove-customer", component: RemoveCustomerComponent},
-  // { path: "admin/update-company", component: UpdateCompanyComponent},
-  // { path: "admin/update-customer", component: UpdateCustomerComponent},
+//   { path: "", redirectTo: "/login", pathMatch: "full"},
+//   { path: "**", redirectTo: "/login", pathMatch: "full"},
+
+        //***admin Router
+  { path: "create-company", component: CreateCompanyComponent},
+  { path: "create-customer", component: CreateCustomerComponent},
+  { path: "get-all-companies", component: GetAllCompaniesComponent},
+  { path: "get-all-customers", component: GetAllCustomersComponent},
+  { path: "get-company", component: GetCompanyComponent},
+  { path: "get-customer", component: GetCustomerComponent},
+  { path: "remove-company", component: RemoveCompanyComponent},
+  { path: "remove-customer", component: RemoveCustomerComponent},
+  { path: "update-company", component: UpdateCompanyComponent},
+  { path: "update-customer", component: UpdateCustomerComponent},
+
+          //***company Router
+  { path: "admin/create-company", component: CreateCompanyComponent},
+  { path: "admin/create-customer", component: CreateCustomerComponent},
+  { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
+  { path: "admin/get-all-customers", component: GetAllCustomersComponent},
+  { path: "admin/get-company", component: GetCompanyComponent},
+  { path: "admin/get-customer", component: GetCustomerComponent},
+  { path: "admin/remove-company", component: RemoveCompanyComponent},
+  { path: "admin/remove-customer", component: RemoveCustomerComponent},
+  { path: "admin/update-company", component: UpdateCompanyComponent},
+  { path: "admin/update-customer", component: UpdateCustomerComponent},
+
+          //***customer Router
+  { path: "admin/create-company", component: CreateCompanyComponent},
+  { path: "admin/create-customer", component: CreateCustomerComponent},
+  { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
+  { path: "admin/get-all-customers", component: GetAllCustomersComponent},
+  { path: "admin/get-company", component: GetCompanyComponent},
+  { path: "admin/get-customer", component: GetCustomerComponent},
+  { path: "admin/remove-company", component: RemoveCompanyComponent},
+  { path: "admin/remove-customer", component: RemoveCustomerComponent},
+  { path: "admin/update-company", component: UpdateCompanyComponent},
+  { path: "admin/update-customer", component: UpdateCustomerComponent},
 ];
 
 @NgModule({
