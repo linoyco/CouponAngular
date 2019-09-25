@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
-import { IsetCookie } from './IsetCookie.component';
 import { Subscription } from 'rxjs';
 import { LoginUser } from './loginUser';
 import { ConnectionServiceService } from 'src/app/services/connection-service.service';
@@ -18,11 +17,9 @@ export class LoginComponent implements OnInit {
 
   public imageWidth: number;
   @ViewChild('f') userLoginForm: NgForm;
-  public result: IsetCookie;
-
   obsSubscription: Subscription = null;
-  errAlert: string;
   loginUser: LoginUser = <LoginUser>{};
+  clientTypeForGuard: string;
 
   public constructor(private title: Title, private connectionService: ConnectionServiceService, private router: Router) { }
 
@@ -30,11 +27,9 @@ export class LoginComponent implements OnInit {
     this.title.setTitle("login to coupon")
     this.imageWidth = 250;
   }
-
   public increaseWidth(): void {
     this.imageWidth += 10;
   }
-
   public decreaseWidth(): void {
     this.imageWidth -= 10;
   }
@@ -49,17 +44,22 @@ export class LoginComponent implements OnInit {
     this.connectionService.login(username, password, clientType).subscribe(
       res => {
         if (clientType === "ADMIN") { this.router.navigate(["/admin"]) //navigate to admin page
-          if (res.status === ResponseCodes.OK) { this.connectionService.token = res.body; console.log("bye"); console.log(this.connectionService.token)}
+          if (res.status === ResponseCodes.OK) { this.connectionService.token = res.body; console.log("admin is logged in !"); console.log(this.connectionService.token)}
           else { console.log(res.status); }
+          this.clientTypeForGuard = clientType;
         }
 
-        if (clientType === "customer") { this.router.navigate(["/customer"])//navigate to customer page
-          if (res.status === ResponseCodes.OK) { console.log(res.body) }
+        if (clientType === "CUSTOMER") { this.router.navigate(["/customer"])//navigate to customer page
+          if (res.status === ResponseCodes.OK){ this.connectionService.token = res.body; console.log("customer is logged in !"); console.log(this.connectionService.token)}
           else { console.log(res.status); }
+          this.clientTypeForGuard = clientType;
+
         }
-        if (clientType === "company") {  this.router.navigate(["/company"])//navigate to company page
-          if (res.status === ResponseCodes.OK) { console.log(res.body) }
+        if (clientType === "COMPANY") {  this.router.navigate(["/company"])//navigate to company page
+          if (res.status === ResponseCodes.OK) { this.connectionService.token = res.body; console.log("company is logged in !"); console.log(this.connectionService.token)}
           else { console.log(res.status); }
+          this.clientTypeForGuard = clientType;
+
         }
       },
       err => {

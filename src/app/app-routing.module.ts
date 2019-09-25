@@ -14,25 +14,31 @@ import { RemoveCompanyComponent } from './components/admin/remove-company/remove
 import { RemoveCustomerComponent } from './components/admin/remove-customer/remove-customer.component';
 import { UpdateCompanyComponent } from './components/admin/update-company/update-company.component';
 import { UpdateCustomerComponent } from './components/admin/update-customer/update-customer.component';
+import { CustomerGuardService } from './services/customer-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
+import { CompanyGuardService } from './services/company-guard.service';
 
 const routes: Routes = [
-  { path: "admin", component: AdminComponent},
-  { path: "customer", component: CustomerComponent},
-  { path: "company", component: CompanyComponent},
+  { path: "admin", //canActivate:[AdminGuardService],
+          component: AdminComponent},
+  { path: "customer", //canActivate:[CustomerGuardService], 
+          component: CustomerComponent},
+  { path: "company", //canActivate:[CompanyGuardService], 
+          component: CompanyComponent},
   { path: "login", component: LoginComponent},
-  { path: "admin/create-company", component: CreateCompanyComponent},
-  { path: "admin/create-customer", component: CreateCustomerComponent},
-  { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
-  { path: "admin/get-all-customers", component: GetAllCustomersComponent},
-  { path: "admin/get-company", component: GetCompanyComponent},
-  { path: "admin/get-customer", component: GetCustomerComponent},
-  { path: "admin/remove-company", component: RemoveCompanyComponent},
-  { path: "admin/remove-customer", component: RemoveCustomerComponent},
-  { path: "admin/update-company", component: UpdateCompanyComponent},
-  { path: "admin/update-customer", component: UpdateCustomerComponent},
 
   { path: "", redirectTo: "/login", pathMatch: "full"},
-  { path: "**", redirectTo: "/login", pathMatch: "full"}
+  { path: "**", redirectTo: "/login", pathMatch: "full"},
+  // { path: "admin/create-company", component: CreateCompanyComponent},
+  // { path: "admin/create-customer", component: CreateCustomerComponent},
+  // { path: "admin/get-all-companies", component: GetAllCompaniesComponent},
+  // { path: "admin/get-all-customers", component: GetAllCustomersComponent},
+  // { path: "admin/get-company", component: GetCompanyComponent},
+  // { path: "admin/get-customer", component: GetCustomerComponent},
+  // { path: "admin/remove-company", component: RemoveCompanyComponent},
+  // { path: "admin/remove-customer", component: RemoveCustomerComponent},
+  // { path: "admin/update-company", component: UpdateCompanyComponent},
+  // { path: "admin/update-customer", component: UpdateCustomerComponent},
 ];
 
 @NgModule({
