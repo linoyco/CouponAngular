@@ -12,12 +12,21 @@ export class ConnectionServiceService {
 
   private _urlLogin = 'http://localhost:8080/Login/login';
 
-  public token ="";
+  public token : string = localStorage.getItem("token");
 
 
   constructor(private http: HttpClient) { 
 
   }
+
+  public getToken(){
+    return this.token;
+  }
+  public setToken(token:string){
+    this.token = token;
+  }
+
+
   login(userName, password, cliantType): Observable<any>{
     let url = this._urlLogin + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
     console.log(url)
