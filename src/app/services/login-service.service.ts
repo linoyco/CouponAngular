@@ -15,6 +15,9 @@ export class LoginServiceService {
 
   private userInfo = null;
 
+  private _urlLogin = 'http://localhost:8080/Login/login';
+
+  public token : string = localStorage.getItem("token");
 
   private userAdmin = JSON.parse(localStorage.getItem("userAdmin") || 'false');
   private userCompany = JSON.parse(localStorage.getItem("userCompany") || 'false');
@@ -27,6 +30,19 @@ export class LoginServiceService {
 
   private notAllowed = "This user is not allowed to this page!";
   private numberOfRetry = 1;
+
+  public getToken(){
+    return this.token;
+  }
+  public setToken(token:string){
+    this.token = token;
+  }
+
+  login(userName, password, cliantType): Observable<any>{
+    let url = this._urlLogin + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
+    console.log(url)
+    return this.http.post(url, null, {observe : 'response', responseType: 'text'});
+  }
 
   goodLogin(username: string) {
     localStorage.setItem("userLogged", "true");
@@ -128,17 +144,17 @@ export class LoginServiceService {
     return this.notAllowed;
   }
 
-  public login(username, password, clientType): Observable<HttpResponse<Object>> {
+  // public login(username, password, clientType): Observable<HttpResponse<Object>> {
 
-    let user = { username: username, password: password, clientType: clientType };
+  //   let user = { username: username, password: password, clientType: clientType };
 
-    console.log(user.username);
-    console.log(user.password);
-    console.log(user.clientType);
-    let url = this.urlsService.getLoginUrl();
+  //   console.log(user.username);
+  //   console.log(user.password);
+  //   console.log(user.clientType);
+  //   let url = this.urlsService.getLoginUrl();
 
-    return this.http.post(url, user, { observe: 'response' }).pipe(retry(this.numberOfRetry));
-  }
+  //   return this.http.post(url, user, { observe: 'response' }).pipe(retry(this.numberOfRetry));
+  // }
 
   public getUserInfo() {
     return this.userInfo;
