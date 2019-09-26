@@ -44,7 +44,7 @@ const routes: Routes = [
                 component: CompanyComponent },
         { path: "login", component: LoginComponent },
 
-        // { path: "", redirectTo: "/login", pathMatch: "full"},
+        { path: "", redirectTo: "/login", pathMatch: "full"},
         // { path: "**", redirectTo: "/login", pathMatch: "full"},
 
         //***admin Router

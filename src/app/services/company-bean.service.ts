@@ -3,14 +3,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 import { UrlsServiceService } from './urls-service.service';
-import { ConnectionServiceService } from './connection-service.service';
+import { LoginServiceService } from './login-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyBeanService {
 
-  constructor(private http: HttpClient, private urlsService: UrlsServiceService,private connectionService: ConnectionServiceService) { }
+  constructor(private http: HttpClient, private urlsService: UrlsServiceService,private loginService: LoginServiceService) { }
 
   private addcompany = "createCompany/";
   private removecompany = "deleteCompany/";
@@ -26,7 +26,7 @@ export class CompanyBeanService {
       password: Password, email: Email
     };
 
-    let url = this.urlsService.getAdminUrl() + this.addcompany + "/" + this.connectionService.token;
+    let url = this.urlsService.getAdminUrl() + this.addcompany + "/" + this.loginService.token;
 
     return this.http.post(url, company, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   }
@@ -49,7 +49,7 @@ export class CompanyBeanService {
   }
 
   public getCompany(companyId): Observable<HttpResponse<Object>> {
-    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + companyId +  "/" + this.connectionService.token;
+    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + companyId +  "/" + this.loginService.token;
 
     return this.http.get(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   }
