@@ -6,4 +6,15 @@ import { Injectable } from '@angular/core';
 export class ItemsService {
 
   constructor() { }
+
+  company : any = {};
+
+  coupon : any = {};
+
+  customer: any = {};
+
+  
+
+
+
 }

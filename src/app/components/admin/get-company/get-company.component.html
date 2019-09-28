@@ -1,4 +1,33 @@
 <p>
   get-company works!
 </p>
-<a routerLink = '/admin'> Back to Admin menu</a>
+
+
+<div>
+  <h2>View Company</h2>
+
+  <div>
+    <input class="inputs" #companyID type="number" placeholder="Company ID" maxlength="20" min="0">
+    <br>
+    <br>
+    <button class="buttons" (click)="searchCompany(companyID.value)">Click</button>
+
+  </div>
+
+  <br>
+  <br>
+  <div>
+    Company ID: <span>{{itemService.company.id}}</span>
+    <br>
+    Company Name: <span>{{itemService.company.companyName}}</span>
+    <br>
+    Company Password: <span>{{itemService.company.password}}</span>
+    <br>
+    Company Email: <span>{{itemService.company.email}}</span>
+    <br>
+  </div>
+  <br>
+</div>
+
+
+<a routerLink='/admin'> Back to Admin menu</a>

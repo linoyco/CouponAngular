@@ -36,7 +36,7 @@ import { GetIncomeByCustomerIdComponent } from './components/admin/get-income-by
 
 const routes: Routes = [
         //***global***
-        { path: "admin", //canActivate:[AdminGuardService],
+        { path: "admin", canActivate:[AdminGuardService],
                 component: AdminComponent },
         { path: "customer", //canActivate:[CustomerGuardService], 
                 component: CustomerComponent },

@@ -13,41 +13,41 @@ export class AdminServiceService {
     })
   };
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public createCompany(){
-
-  }
-
-  public removeCompany(){
+  public createCompany() {
 
   }
 
-  public updateComany(){
+  public removeCompany() {
 
   }
 
-  public getCompany(){
+  public updateComany() {
 
   }
 
-  public getAllCompanies(){
+  public getCompany() {
 
   }
 
-  public createCustomer(){
+  public getAllCompanies() {
 
   }
 
-  public removeCustomer(){
+  public createCustomer() {
 
   }
 
-  public updateCustomer(){
+  public removeCustomer() {
 
   }
 
-  public getCustomer(){
+  public updateCustomer() {
+
+  }
+
+  public getCustomer() {
 
   }
 
@@ -59,9 +59,7 @@ export class AdminServiceService {
   // return arr;
   // }
 
-  public getAllCustomers():Observable<Customer[]>{
-    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers",{responseType:'json',  withCredentials:true} );
+  public getAllCustomers(): Observable<Customer[]> {
+    return this.http.get<Customer[]>("http://localhost:8080/CouponsSystemREST/rest/admin/getAllCustomers", { responseType: 'json', withCredentials: true });
   }
-
-
 }

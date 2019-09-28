@@ -44,19 +44,19 @@ export class LoginComponent implements OnInit {
     this.loginService.login(username, password, clientType).subscribe(
       res => {
         if (clientType === "ADMIN") { this.router.navigate(["/admin"]) //navigate to admin page
-          if (res.status === ResponseCodes.OK) { this.loginService.token = res.body; console.log("admin is logged in !"); console.log(this.loginService.token)}
+          if (res.status === ResponseCodes.OK) { this.loginService.token = res.body; localStorage.setItem("token", res.body); this.loginService.setAdminUser(); console.log("admin is logged in !"); console.log(this.loginService.token)}
           else { console.log(res.status); }
           this.clientTypeForGuard = clientType;
         }
 
         if (clientType === "CUSTOMER") { this.router.navigate(["/customer"])//navigate to customer page
-          if (res.status === ResponseCodes.OK){ this.loginService.token = res.body; console.log("customer is logged in !"); console.log(this.loginService.token)}
+          if (res.status === ResponseCodes.OK){ this.loginService.token = res.body;  localStorage.setItem("token", res.body);  this.loginService.setCustomerUser(); console.log("customer is logged in !"); console.log(this.loginService.token)}
           else { console.log(res.status); }
           this.clientTypeForGuard = clientType;
 
         }
         if (clientType === "COMPANY") {  this.router.navigate(["/company"])//navigate to company page
-          if (res.status === ResponseCodes.OK) { this.loginService.token = res.body; console.log("company is logged in !"); console.log(this.loginService.token)}
+          if (res.status === ResponseCodes.OK) { this.loginService.token = res.body;  localStorage.setItem("token", res.body);  this.loginService.setCompanyUser(); console.log("company is logged in !"); console.log(this.loginService.token)}
           else { console.log(res.status); }
           this.clientTypeForGuard = clientType;
 
