@@ -39,14 +39,12 @@ export class CompanyBeanService {
   }
   
   //update company
-  public updateCompany(compId, Password, Email): Observable<any> {
-    let company = {
-      id: compId, password: Password, email: Email,  coupons:[]
-    };
+  public updateCompany(id, password, email): Observable<any> {
 
-    let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token;
+    let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token 
+    + "/?id="+ id + "&password=" + password + "&email=" + email;
 
-    return this.http.post(url, company, { observe: 'response', responseType: 'text' });
+    return this.http.post(url, { observe: 'response', responseType: 'text' });
   }
 
     //get company works

@@ -24,8 +24,7 @@ export class UpdateCompanyComponent implements OnInit {
     error => {
       let resError : HttpErrorResponse = error;
       if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); }
-    else { console.log("Update Faild");
-     }
+    else { console.log("Update Faild"); console.log(id, password, email); }
     });
   }
 
