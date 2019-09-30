@@ -3,14 +3,17 @@
 </p>
 
 <div>
+  <input class="inputs" #name type="text" placeholder="Company name">
+  <br><br>
 
-  <input class="inputs" #name type="text" placeholder="test">
-  <input class="inputs" #pass type="text" placeholder="test">
-  <input class="inputs" #email type="text" placeholder="test">
+  <input class="inputs" #pass type="text" placeholder="Password">
+  <br><br>
+
+  <input class="inputs" #email type="text" placeholder="Email">
+  <br><br>
 
   <button (click)="addCompany(name.value, pass.value, email.value)">Add</button>
 
 </div>
 
-
-<a routerLink = '/admin'> Back to Admin menu</a>
+<a routerLink='/admin'> Back to Admin menu</a>
