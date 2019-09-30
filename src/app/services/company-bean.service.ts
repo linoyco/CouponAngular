@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { retry } from 'rxjs/operators';
 import { UrlsServiceService } from './urls-service.service';
 import { LoginServiceService } from './login-service.service';
-import { Company } from '../models/company';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,8 @@ export class CompanyBeanService {
 
   private numberOfRetry = 1;
 
-  public addCompany(CompanyName, Password, Email): Observable<any> {
+  //create company works
+  public createCompany(CompanyName, Password, Email): Observable<any> {
     let company = {
       id: 0, companyName: CompanyName,
       password: Password, email: Email, coupons:[]
@@ -37,24 +37,19 @@ export class CompanyBeanService {
 
     return this.http.delete(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   }
-
-  public updateCompany(companyId, companyName, Password, Email): Observable<HttpResponse<Object>> {
+  
+  //update company
+  public updateCompany(compId, Password, Email): Observable<any> {
     let company = {
-      id: companyId, companyName: companyName,
-      password: Password, email: Email
+      id: compId, password: Password, email: Email,  coupons:[]
     };
 
-    let url = this.urlsService.getAdminUrl() + this.updatecompany;
+    let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token;
 
-    return this.http.post(url, company, { observe: 'response' }).pipe(retry(this.numberOfRetry));
+    return this.http.post(url, company, { observe: 'response', responseType: 'text' });
   }
 
-  // public getCompany(companyId): Observable<HttpResponse<any>> {
-  //   let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + companyId +  "/" + this.loginService.token;
-
-  //   return this.http.get(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
-  // }
-
+    //get company works
   public getCompany(id: number): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;    
 

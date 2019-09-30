@@ -1,4 +1,19 @@
 <p>
   update-company works!
 </p>
+
+<div>
+<input class="inputs" #compid type="text" placeholder="Company id">
+<br><br>
+
+<input class="inputs" #pass type="text" placeholder="New password">
+<br><br>
+
+<input class="inputs" #email type="text" placeholder="New email">
+<br><br>
+
+<button (click)="updateCompany(compid.value, pass.value, email.value)">Update!</button>
+
+</div>
+
 <a routerLink = '/admin'> Back to Admin menu</a>
