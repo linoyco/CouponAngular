@@ -38,13 +38,13 @@ export class CompanyBeanService {
     return this.http.delete(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   }
   
-  //update company
+  //update company works
   public updateCompany(id, password, email): Observable<any> {
 
     let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token 
     + "/?id="+ id + "&password=" + password + "&email=" + email;
 
-    return this.http.post(url, { observe: 'response', responseType: 'text' });
+    return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
     //get company works

@@ -18,13 +18,13 @@ export class UpdateCompanyComponent implements OnInit {
 
   private updateCompany(id, password, email){
     this.companyBeanService.updateCompany(id, password, email).subscribe(res =>{
-        if(res.status === ResponseCodes.OK){console.log(res.body); alert("Update success !"); }
+        if(res.status === ResponseCodes.OK){ alert("Update success !"); console.log(res.body); }
         else { console.log("something wrong"); }
     },
     error => {
       let resError : HttpErrorResponse = error;
       if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); }
-    else { console.log("Update Faild"); console.log(id, password, email); }
+    else { console.log("Update Faild"); console.log(" resError: "+resError.error); console.log(error); }
     });
   }
 
