@@ -21,42 +21,35 @@ export class CompanyBeanService {
   public createCompany(CompanyName, Password, Email): Observable<any> {
     let company = {
       id: 0, companyName: CompanyName,
-      password: Password, email: Email, coupons:[]
+      password: Password, email: Email, coupons: []
     };
-
     let url = this.urlsService.getAdminUrl() + this.addcompany + "/" + this.loginService.token;
-
     return this.http.post(url, company, { observe: 'response', responseType: 'text' });
   }
 
   //delete company works!
-  public deleteCompany(companyId): Observable<any> {
+  public deleteCompany(id: number): Observable<any> {
 
-    let url = this.urlsService.getAdminUrl() + this.deletecompany + "/" + companyId + "/" + this.loginService.token;
-
+    let url = this.urlsService.getAdminUrl() + this.deletecompany + "/" + id + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
-  
+
   //update company works
   public updateCompany(id, password, email): Observable<any> {
 
-    let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token 
-    + "/?id="+ id + "&password=" + password + "&email=" + email;
-
+    let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token
+      + "/?id=" + id + "&password=" + password + "&email=" + email;
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
-    //get company works
+  //get company works
   public getCompany(id: number): Observable<any> {
-    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;    
-
+    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
-
   public getAllCompanies(): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getallcompanies + "/" + this.loginService.token;
-
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
