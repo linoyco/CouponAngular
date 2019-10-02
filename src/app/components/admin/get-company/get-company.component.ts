@@ -21,15 +21,16 @@ export class GetCompanyComponent implements OnInit {
   }
 
   //זו הדרך התקינה לפענח תשובה משרת ללא קלאס מפענח
-  public searchCompany(companyID: number) {
+  public getCompany(companyID: number) {
     this.companyBeanService.getCompany(companyID).subscribe(res => {
       if (res.status === ResponseCodes.OK) { console.log(res.body); this.itemService.company = JSON.parse(res.body); console.log(this.itemService.company); }
       else { console.log("something wrong"); }
     },
     error => {
       let resError: HttpErrorResponse = error;
-      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); }
-      else{ console.log("something wrong Error"); }
+      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); }
+     //add navigate
+      else { console.log("something wrong Error"); }
     });
   }
 

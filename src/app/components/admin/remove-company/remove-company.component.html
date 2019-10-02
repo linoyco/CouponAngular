@@ -1,4 +1,18 @@
 <p>
   remove-company works!
 </p>
-<a routerLink = '/admin'> Back to Admin menu</a>
+
+<div>
+  <h2>Which company you want to delete??</h2>
+
+  <div>
+    <input class="inputs" #companyID type="number" placeholder="Company ID" maxlength="20" min="0">
+    <br>
+    <br>
+    <button class="buttons" (click)="deleteCompany(companyID.value)">Delete!</button>
+  </div>
+
+</div>
+
+
+<a routerLink='/admin'> Back to Admin menu</a>

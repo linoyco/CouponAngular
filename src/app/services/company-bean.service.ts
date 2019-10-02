@@ -13,7 +13,7 @@ export class CompanyBeanService {
   constructor(private http: HttpClient, private urlsService: UrlsServiceService, private loginService: LoginServiceService) { }
 
   private addcompany = "createCompany";
-  private removecompany = "deleteCompany";
+  private deletecompany = "deleteCompany";
   private updatecompany = "updateCompany";
   private getcompany = "companyById";
   private getallcompanies = "getAllCompanies";
@@ -32,10 +32,11 @@ export class CompanyBeanService {
     return this.http.post(url, company, { observe: 'response', responseType: 'text' });
   }
 
-  public removeCompany(companyId): Observable<HttpResponse<Object>> {
-    let url = this.urlsService.getAdminUrl() + this.removecompany + "?id=" + companyId;
+  public deleteCompany(companyId): Observable<any> {
 
-    return this.http.delete(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
+    let url = this.urlsService.getAdminUrl() + this.deletecompany + "/" + companyId + "/" + this.loginService.token;
+
+    return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
   
   //update company works
