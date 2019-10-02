@@ -2,4 +2,28 @@
   get-customer works!
 </p>
 
+<div>
+    <h2>View Company</h2>
+  
+    <div>
+      <input class="inputs" #customerID type="number" placeholder="Customer ID" maxlength="20" min="0">
+      <br>
+      <br>
+      <button class="buttons" (click)="getCustomer(customerID.value)">Show me this customer!</button>
+  
+    </div>
+  
+    <br>
+    <br>
+    <div>
+      Customer ID: <span>{{itemService.customer.id}}</span>
+      <br>
+      Customer Name: <span>{{itemService.customer.customerName}}</span>
+      <br>
+      Customer Password: <span>{{itemService.customer.password}}</span>
+      <br>
+    </div>
+    <br>
+  </div>
+
 <a routerLink = '/admin'> Back to Admin menu</a>

@@ -24,13 +24,13 @@ export class GetCompanyComponent implements OnInit {
   public getCompany(companyID: number) {
     this.companyBeanService.getCompany(companyID).subscribe(res => {
       if (res.status === ResponseCodes.OK) { console.log(res.body); this.itemService.company = JSON.parse(res.body); console.log(this.itemService.company); }
-      else { console.log("something wrong"); }
+      else { console.log("get company faild"); }
     },
     error => {
       let resError: HttpErrorResponse = error;
       if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); }
      //add navigate
-      else { console.log("something wrong Error"); }
+      else { console.log("something wrong .. get company faild"); }
     });
   }
 

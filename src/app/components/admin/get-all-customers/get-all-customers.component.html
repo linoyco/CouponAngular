@@ -1,33 +1,5 @@
 <p>
   get-all-customers works!
 </p>
-<div class="container">
 
-
-  <h1>
-    Customers
-  </h1>
-  
-  <table>
-    <thead>
-    <th>customerName</th>
-    <th>password</th>
-    <th>Operation</th>
-    </thead>
-    <tbody>
-    <tr *ngFor = "let c of customers">
-        <td>
-          <a routerLink="admin/get-all-customers{{c.customerId}}">{{c.customerName}}</a>
-        </td> 
-  
-      <td>{{c.password}}</td>
-      <td><button class="btn btn-danger"(click)="removeCustomer(c.customerId)">Delete</button>
-        <!-- <button class="btn btn-danger"(click)="updateCompany(p.customerId)">Update</button> -->
-      </td>
-  
-    </tr>
-  </tbody>
-    </table>
-    </div>
-  
-    <a routerLink = '/admin'> Back to Admin menu</a>
+<a routerLink='/admin'> Back to Admin menu</a>
