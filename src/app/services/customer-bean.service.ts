@@ -17,6 +17,7 @@ export class CustomerBeanService {
   private getcustomer = "customerById";
   private getallcustomers = "getAllCustomers";
 
+  //create customer works!
   public createCustomer(CustomerName, Password): Observable<any> {
     let customer = {
       id: 0, customerName: CustomerName, password: Password, coupons: []
