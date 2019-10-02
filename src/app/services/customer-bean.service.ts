@@ -26,6 +26,7 @@ export class CustomerBeanService {
     return this.http.post(url, customer, { observe: 'response', responseType: 'text' });
   }
 
+  //
   public deleteCustomer(customerID: number): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.deletecustomer + "/" + customerID + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
@@ -37,6 +38,7 @@ export class CustomerBeanService {
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
+  //get customer works!
   public getCustomer(id: number): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getcustomer + "/" + id + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });

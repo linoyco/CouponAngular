@@ -17,14 +17,14 @@ export class RemoveCompanyComponent implements OnInit {
 
   public deleteCompany(companyID: number) {
     this.companyBeanService.deleteCompany(companyID).subscribe(res => {
-      if (res.status === ResponseCodes.OK) { console.log("success to delete! status:200  " + res.body); alert("success to delete"); }
-      else { console.log("something faild"); }
+      if (res.status === ResponseCodes.OK) { console.log("success to delete company! status:200  " + res.body); alert("success to delete"); }
+      else { console.log("something faild.. delete company"); }
     },
       error => {
         let resError: HttpErrorResponse = error;
         if(resError.error === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again"); }
           //add navigate
-        else { console.log("something wrong Error"); }
+        else { console.log("something wrong with delete company"); }
       });
   }
 

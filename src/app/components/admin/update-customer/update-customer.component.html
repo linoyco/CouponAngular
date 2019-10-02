@@ -1,4 +1,17 @@
 <p>
   update-customer works!
 </p>
+
+<div>
+    <input class="inputs" #customerID type="number" placeholder="Customer id" maxlength="20" min="0">
+    <br><br>
+    
+    <input class="inputs" #pass type="text" placeholder="New password">
+    <br><br>
+    
+    <button (click)="updateCustomer(customerID.value, pass.value)">Update!</button>
+    
+    </div>
+
+
 <a routerLink = '/admin'> Back to Admin menu</a>
