@@ -1,4 +1,16 @@
 <p>
   create-customer works!
 </p>
+
+<div>
+<input class="inputs" #name type="text" placeholder="Customer name">
+<br><br>
+
+<input class="inputs" #pass type="text" placeholder="Password">
+<br><br>
+
+<button (click)="createCustomer(name.value, pass.value)">Add</button>
+
+</div>
+
 <a routerLink = '/admin'> Back to Admin menu</a>

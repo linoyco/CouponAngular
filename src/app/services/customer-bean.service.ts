@@ -21,28 +21,28 @@ export class CustomerBeanService {
     let customer = {
       id: 0, customerName: CustomerName, password: Password, coupons: []
     };
-    let url = this.urlsService.getCustomerUrl() + this.createcustomer + "/" + this.loginService.token;
+    let url = this.urlsService.getAdminUrl() + this.createcustomer + "/" + this.loginService.token;
     return this.http.post(url, customer, { observe: 'response', responseType: 'text' });
   }
 
   public deleteCustomer(customerID: number): Observable<any> {
-    let url = this.urlsService.getCustomerUrl() + this.deletecustomer + "/" + customerID + "/" + this.loginService.token;
+    let url = this.urlsService.getAdminUrl() + this.deletecustomer + "/" + customerID + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
   public updateCustomer(id, password): Observable<any> {
-    let url = this.urlsService.getCustomerUrl() + this.updatecustomer + "/" + this.loginService.token
+    let url = this.urlsService.getAdminUrl() + this.updatecustomer + "/" + this.loginService.token
       + "/?id=" + id + "&password=" + password;
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
   public getCustomer(id: number): Observable<any> {
-    let url = this.urlsService.getCustomerUrl() + this.getcustomer + "/" + id + "/" + this.loginService.token;
+    let url = this.urlsService.getAdminUrl() + this.getcustomer + "/" + id + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
   public getAllCustomers(): Observable<any> {
-    let url = this.urlsService.getCustomerUrl() + this.getallcustomers + "/" + this.loginService.token;
+    let url = this.urlsService.getAdminUrl() + this.getallcustomers + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 

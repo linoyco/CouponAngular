@@ -20,14 +20,14 @@ export class CreateCompanyComponent implements OnInit {
   private createCompany(name, password, email){
     this.companyBeanService.createCompany(name, password, email).subscribe(res => {
       if(res.status === ResponseCodes.OK){ console.log(res.body); alert("success to create company!"); }
-      else{ console.log("something wrong");}
+      else { console.log("create company wrong"); }
     }, 
     error => {
       let resError : HttpErrorResponse = error;
-      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); }
+      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); }
+      //navigate
       else { console.log("something wrong with this new company !"); alert("this company already exist!");}
     });
     this.router.navigate(["/admin"])
   }
-
 }
