@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyBeanService } from 'src/app/services/company-bean.service';
 import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-remove-company',
@@ -10,22 +11,23 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RemoveCompanyComponent implements OnInit {
 
-  constructor(private companyBeanService: CompanyBeanService) { }
+  constructor(private companyBeanService: CompanyBeanService, private router: Router) { }
 
   ngOnInit() {
   }
 
   public deleteCompany(companyID: number) {
     this.companyBeanService.deleteCompany(companyID).subscribe(res => {
-      if (res.status === ResponseCodes.OK) { console.log("success to delete company! status:200  " + res.body); alert("success to delete"); }
-      else { console.log("something faild.. delete company"); }
+      if (res.status === ResponseCodes.OK) { console.log("DELETE company success! :) " + res.body); alert("DELETE company success! :) "); }
+      else { console.log("DELETE company faild! :( "); }
     },
       error => {
         let resError: HttpErrorResponse = error;
-        if(resError.error === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again"); }
-          //add navigate
-        else { console.log("something wrong with delete company"); }
+        if(resError.error === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again");
+        this.router.navigate(["/login"]); }
+        else { console.log("DELETE company error :( "); }
       });
+      this.router.navigate(["/admin"]);
   }
 
 }

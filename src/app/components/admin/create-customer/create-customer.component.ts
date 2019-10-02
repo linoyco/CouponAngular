@@ -18,15 +18,15 @@ export class CreateCustomerComponent implements OnInit {
 
   private createCustomer(customerName, password) {
     this.customerBeanService.createCustomer(customerName, password).subscribe(res => {
-      if (res.status === ResponseCodes.OK) { console.log(res.body); alert("success to create customer!"); }
-      else { console.log("create customer faild"); }
+      if (res.status === ResponseCodes.OK) { console.log("CREATE customer success! :) "+res.body); alert("CREATE customer success! :)"); }
+      else { console.log("CREATE customer faild! :( "); }
     },
       error => {
         let resError: HttpErrorResponse = error;
-        if (resError.status === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again"); }
-        //navigate
-        else { console.log("something wrong with this new customer !"); console.log(error); }
+        if (resError.status === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again");
+        this.router.navigate(["/login"]); }
+        else { console.log("CREATE customer error :( "); console.log(error); }
       });
-    this.router.navigate(["/admin"])
+    this.router.navigate(["/admin"]);
   }
 }

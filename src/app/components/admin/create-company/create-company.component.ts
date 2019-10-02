@@ -11,23 +11,23 @@ import { Router } from '@angular/router';
 })
 export class CreateCompanyComponent implements OnInit {
 
-  constructor(private companyBeanService: CompanyBeanService,private router: Router) { }
+  constructor(private companyBeanService: CompanyBeanService, private router: Router) { }
 
   ngOnInit() {
   }
 
 
-  private createCompany(name, password, email){
+  private createCompany(name, password, email) {
     this.companyBeanService.createCompany(name, password, email).subscribe(res => {
-      if(res.status === ResponseCodes.OK){ console.log(res.body); alert("success to create company!"); }
-      else { console.log("create company wrong"); }
-    }, 
-    error => {
-      let resError : HttpErrorResponse = error;
-      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); }
-      //navigate
-      else { console.log("something wrong with this new company !"); alert("this company already exist!");}
-    });
-    this.router.navigate(["/admin"])
+      if (res.status === ResponseCodes.OK) { console.log("CREATE company success! :) " + res.body); alert("CREATE company success! :)"); }
+      else { console.log("CREATE company faild! :( "); }
+    },
+      error => {
+        let resError: HttpErrorResponse = error;
+        if (resError.error === ResponseCodes.UNAUTHORIZED) { console.log("session expired"); alert("please login again");
+        this.router.navigate(["/login"]); }
+        else { console.log("CREATE company error :( "); alert("this company already exist!"); }
+      });
+    this.router.navigate(["/admin"]);
   }
 }

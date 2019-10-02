@@ -3,6 +3,7 @@ import { CompanyBeanService } from 'src/app/services/company-bean.service';
 import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemsService } from 'src/app/services/items.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ItemsService } from 'src/app/services/items.service';
 export class GetCompanyComponent implements OnInit {
 
 
-  constructor(private companyBeanService: CompanyBeanService, private itemService : ItemsService) { }
+  constructor(private companyBeanService: CompanyBeanService, private itemService : ItemsService, private router : Router) { }
 
   private company: any = {};
 
@@ -23,14 +24,14 @@ export class GetCompanyComponent implements OnInit {
   //זו הדרך התקינה לפענח תשובה משרת ללא קלאס מפענח
   public getCompany(companyID: number) {
     this.companyBeanService.getCompany(companyID).subscribe(res => {
-      if (res.status === ResponseCodes.OK) { console.log(res.body); this.itemService.company = JSON.parse(res.body); console.log(this.itemService.company); }
-      else { console.log("get company faild"); }
+      if (res.status === ResponseCodes.OK) { console.log("GET company success! :) "+res.body); this.itemService.company = JSON.parse(res.body); console.log(this.itemService.company); }
+      else { console.log("GET company faild! :( "); }
     },
     error => {
       let resError: HttpErrorResponse = error;
-      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); }
-     //add navigate
-      else { console.log("something wrong .. get company faild"); }
+      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); 
+      this.router.navigate(["/login"]); }
+      else { console.log("GET company error :( "); }
     });
   }
 

@@ -11,21 +11,23 @@ import { CustomerBeanService } from 'src/app/services/customer-bean.service';
 })
 export class UpdateCustomerComponent implements OnInit {
 
-  constructor(private customerBeanService: CustomerBeanService) { }
+  constructor(private customerBeanService: CustomerBeanService, private router: Router) { }
 
   ngOnInit() {
   }
 
   private updateCustomer(id, password){
     this.customerBeanService.updateCustomer(id, password).subscribe(res =>{
-        if(res.status === ResponseCodes.OK){ alert("customer update- success! :)"); console.log(res.body); }
-        else { console.log("something wrong with this customer-update :("); }
+        if(res.status === ResponseCodes.OK){ console.log("UPDATE customer success! :) "+res.body);  alert("UPDATE customer success! :) "); }
+        else { console.log("UPDATE customer faild! :( "); }
     },
     error => {
       let resError : HttpErrorResponse = error;
-      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired :("); }
-    else { console.log("customer update Faild :("); }
+      if(resError.error === ResponseCodes.UNAUTHORIZED){ console.log("session expired :("); alert("please login again");
+      this.router.navigate(["/login"]); }
+    else { console.log("UPDATE customer error :( "); }
     });
+    this.router.navigate(["/admin"]);
   }
 
 }
