@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
 import { UrlsServiceService } from './urls-service.service';
 import { LoginServiceService } from './login-service.service';
 
@@ -18,8 +17,6 @@ export class CompanyBeanService {
   private getcompany = "companyById";
   private getallcompanies = "getAllCompanies";
 
-  private numberOfRetry = 1;
-
   //create company works
   public createCompany(CompanyName, Password, Email): Observable<any> {
     let company = {
@@ -32,6 +29,7 @@ export class CompanyBeanService {
     return this.http.post(url, company, { observe: 'response', responseType: 'text' });
   }
 
+  //delete company works!
   public deleteCompany(companyId): Observable<any> {
 
     let url = this.urlsService.getAdminUrl() + this.deletecompany + "/" + companyId + "/" + this.loginService.token;
@@ -56,10 +54,10 @@ export class CompanyBeanService {
   }
 
 
-  public getAllCompanies(): Observable<HttpResponse<Object>> {
-    let url = this.urlsService.getAdminUrl() + this.getallcompanies;
+  public getAllCompanies(): Observable<any> {
+    let url = this.urlsService.getAdminUrl() + this.getallcompanies + "/" + this.loginService.token;
 
-    return this.http.get(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
+    return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
 }
