@@ -1,4 +1,31 @@
 <p>
   get-all-companies works!
 </p>
-<a routerLink = '/admin'> Back to Admin menu</a>
+
+<div>
+  <h2>View ALL Companies</h2>
+
+  <div>
+    <button class="buttons" (click)="getAllCompanies()">Show me all companies!</button>
+  </div>
+<br>
+<br>
+  <div class="view">
+    <ul *ngFor="let c of this.itemService.companies">
+      <br>
+      <br>
+      Company ID: <span>{{c.id}}</span>
+      <br>
+      Company Name: <span>{{c.companyName}}</span>
+      <br>
+      Company Password: <span>{{c.password}}</span>
+      <br>
+      Company Email: <span>{{c.email}}</span>
+      <br>
+    </ul>
+  </div>
+  <br>
+</div>
+
+
+<a routerLink='/admin'> Back to Admin menu</a>
