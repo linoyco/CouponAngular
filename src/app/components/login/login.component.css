@@ -33,7 +33,7 @@ img:hover{
 	filter: grayscale(50%);
 }
 
-.photoSize{
+div:nth-of-type(2){
     position: absolute;
     border: 0.5px solid black;
     top: 120px;

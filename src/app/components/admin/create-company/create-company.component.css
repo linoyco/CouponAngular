@@ -1,0 +1,8 @@
+.logout{
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    padding: 5px;
+    color: aliceblue;
+    background-color: red;
+}
