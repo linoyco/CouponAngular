@@ -21,8 +21,7 @@ export class GetAllCompaniesComponent implements OnInit {
     this.companyBeanService.getAllCompanies().subscribe(res => {
       if (res.status === ResponseCodes.OK) { console.log("GET-ALL companies success! :) "); 
       this.itemService.companies = JSON.parse(res.body); console.log(this.itemService.companies); }
-      else { console.log("GET-ALL companies faild! :( "); console.log("RES ERROR: "+res.error); 
-      console.log("HttpErrorResponse: "+res.HttpErrorResponse); }
+      else { console.log("GET-ALL companies faild! :( "); }
       if (this.itemService.companies === null) { this.itemService.companies = []; console.log("No companies ! "); alert("No companies ! "); }
 
     },

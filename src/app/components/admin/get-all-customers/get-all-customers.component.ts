@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from 'src/app/models/customer';
-import { AdminServiceService } from 'src/app/services/admin-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { CustomerBeanService } from 'src/app/services/customer-bean.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ResponseCodes } from 'src/app/models/responseCodeEnums';
+import { ItemsService } from 'src/app/services/items.service';
+
+
 
 
 @Component({
@@ -11,19 +15,26 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GetAllCustomersComponent implements OnInit {
 
-  public customers:Customer[];
-  public customer:Customer;
-  router:any;
-  getAllcustomers:any;
 
-  constructor(private activatedRoute:ActivatedRoute ,private adminsService:AdminServiceService) { }
+  constructor(private customerBeanService : CustomerBeanService, private router: Router, private itemService: ItemsService) { }
 
   ngOnInit() {
-    this.adminsService.getAllCustomers().subscribe(customers =>{
-      this.customers = customers;
-   },err =>{
-     alert("Error:")
-    });
+
   }
 
+  public getAllCustomers() {
+    this.customerBeanService.getAllCustomers().subscribe(res => {
+      if (res.status === ResponseCodes.OK) { console.log("GET-ALL customers success! :) "); 
+      this.itemService.customers = JSON.parse(res.body); console.log(this.itemService.customers); }
+      else { console.log("GET-ALL customers faild! :( "); }
+      if (this.itemService.customers === null) { this.itemService.customers = []; console.log("No customers ! "); alert("No customers ! "); }
+
+    },
+      error =>{
+        let resError: HttpErrorResponse = error;
+        if(resError.status === ResponseCodes.UNAUTHORIZED){ console.log("session expired"); alert("please login again"); 
+        this.router.navigate(["/login"]); }
+        else { console.log("GET-ALL customers error :( "); }
+    });
+  }
 }
