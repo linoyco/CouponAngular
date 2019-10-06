@@ -1,4 +1,5 @@
 <button class="logout" (click)="logout()"> Logout </button>
+<a class="backTo" routerLink='/admin'> Back to Admin menu</a>
 
 <h1>Add new company</h1>
 
@@ -15,5 +16,3 @@
   <button (click)="createCompany(name.value, pass.value, email.value)">Add</button>
 
 </div>
-
-<a routerLink='/admin'> Back to Admin menu</a>

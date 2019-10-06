@@ -1,4 +1,6 @@
 <button class="logout" (click)="logout()"> Logout </button>
+<a class="backTo" routerLink='/admin'> Back to Admin menu</a>
+
 <h1>Update company</h1>
 
 <div>
@@ -14,5 +16,3 @@
 <button (click)="updateCompany(compid.value, pass.value, email.value)">Update!</button>
 
 </div>
-
-<a routerLink = '/admin'> Back to Admin menu</a>
