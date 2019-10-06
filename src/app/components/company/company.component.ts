@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { CompanyServiceService } from 'src/app/services/company-service.service';
+import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-company',
@@ -9,10 +10,14 @@ import { CompanyServiceService } from 'src/app/services/company-service.service'
 })
 export class CompanyComponent implements OnInit {
 
-  public constructor(private title: Title, private companyService: CompanyServiceService) { }
+  public constructor(private title: Title, private router: Router, private loginService: LoginServiceService) { }
 
   ngOnInit() {
     this.title.setTitle("company page")
   }
 
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
+  }
 }

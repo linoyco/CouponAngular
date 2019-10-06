@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-create-coupon',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCouponComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private loginService: LoginServiceService) { }
 
   ngOnInit() {
   }
 
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
+  }
 }
