@@ -28,16 +28,12 @@ section{
     font-family:  Arial, Helvetica, sans-serif ;
     font-weight: bold;
 }
-/* 
-img{
-	width: 250px; 
-	height: 130px;
-} */
 
 img:hover{
 	filter: grayscale(50%);
 }
-div:nth-of-type(2){
+
+.photoSize{
     position: absolute;
     border: 0.5px solid black;
     top: 120px;
