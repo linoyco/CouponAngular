@@ -21,11 +21,12 @@ export class LoginServiceService {
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
-  //לעשות לוג אאוט
-  // public logout(): Observable<any> {
-  //   let url = this.urlsService.getLogoutUrl();
-  //   return this.http.get(url, { observe: 'response', responseType: 'text' });
-  // }
+  public logout() {
+    localStorage.setItem("token", null);
+    if (this.userAdmin === true) { this.setAdminUserF(); alert("good bye!"); }
+    if (this.userCompany === true) { this.setCompanyUserF(); alert("good bye!"); }
+    if (this.userCustomer === true) { this.setCustomerUserF(); alert("good bye!"); }
+  }
 
   // GET&SET token
   public getToken() {
@@ -35,7 +36,8 @@ export class LoginServiceService {
     this.token = token;
   }
 
-  // GET&SET admin user
+
+  // GET & SET & SETfalse admin user
   getAdminUser() {
     return this.userAdmin;
   }
@@ -43,8 +45,13 @@ export class LoginServiceService {
     localStorage.setItem("userAdmin", "true");
     this.userAdmin = true;
   }
+  setAdminUserF() {
+    localStorage.setItem("userAdmin", "false");
+    this.userAdmin = false;
+  }
 
-  // GET&SET company user
+
+  // GET & SET & SETfalse company user
   getCompanyUser() {
     return this.userCompany;
   }
@@ -52,8 +59,13 @@ export class LoginServiceService {
     localStorage.setItem("userCompany", "true");
     this.userCompany = true;
   }
+  setCompanyUserF() {
+    localStorage.setItem("userCompany", "false");
+    this.userCompany = false;
+  }
 
-  // GET&SET customer user
+
+  // GET & SET & SETfalse customer user
   getCustomerUser() {
     return this.userCustomer;
   }
@@ -61,6 +73,11 @@ export class LoginServiceService {
     localStorage.setItem("userCustomer", "true");
     this.userCustomer = true;
   }
+  setCustomerUserF() {
+    localStorage.setItem("userCustomer", "false");
+    this.userCustomer = false;
+  }
+
 
   // GET user name
   getUserName() {

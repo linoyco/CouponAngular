@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CustomerBeanService } from 'src/app/services/customer-bean.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-update-customer',
@@ -11,7 +12,7 @@ import { CustomerBeanService } from 'src/app/services/customer-bean.service';
 })
 export class UpdateCustomerComponent implements OnInit {
 
-  constructor(private customerBeanService: CustomerBeanService, private router: Router) { }
+  constructor(private customerBeanService: CustomerBeanService, private router: Router, private loginService: LoginServiceService) { }
 
   ngOnInit() {
   }
@@ -30,4 +31,8 @@ export class UpdateCustomerComponent implements OnInit {
     this.router.navigate(["/admin"]);
   }
 
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
+  }
 }

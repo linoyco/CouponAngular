@@ -4,6 +4,7 @@ import { ItemsService } from 'src/app/services/items.service';
 import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-get-all-companies',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class GetAllCompaniesComponent implements OnInit {
 
-  constructor(private companyBeanService: CompanyBeanService, private itemService: ItemsService, private router: Router) { }
+  constructor(private companyBeanService: CompanyBeanService, private itemService: ItemsService, private router: Router,  private loginService: LoginServiceService) { }
 
   ngOnInit() {
   }
@@ -31,5 +32,10 @@ export class GetAllCompaniesComponent implements OnInit {
         this.router.navigate(["/login"]); }
         else { console.log("GET-ALL companies error :( "); }
     });
+  }
+  
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
   }
 }

@@ -4,6 +4,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ItemsService } from 'src/app/services/items.service';
 import { CustomerBeanService } from 'src/app/services/customer-bean.service';
 import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-get-customer',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class GetCustomerComponent implements OnInit {
 
-  constructor(private customerBeanService: CustomerBeanService, private itemService: ItemsService, private router : Router) { }
+  constructor(private customerBeanService: CustomerBeanService, private itemService: ItemsService, private router : Router, private loginService: LoginServiceService) { }
 
   private customer: any = {};
 
@@ -30,6 +31,11 @@ export class GetCustomerComponent implements OnInit {
       this.router.navigate(["/login"]); }
       else {  console.log("GET customer error :( "); }
     });
+  }
+
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
   }
 
 }

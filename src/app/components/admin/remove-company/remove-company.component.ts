@@ -3,6 +3,7 @@ import { CompanyBeanService } from 'src/app/services/company-bean.service';
 import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-remove-company',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RemoveCompanyComponent implements OnInit {
 
-  constructor(private companyBeanService: CompanyBeanService, private router: Router) { }
+  constructor(private companyBeanService: CompanyBeanService, private router: Router, private loginService: LoginServiceService) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,11 @@ export class RemoveCompanyComponent implements OnInit {
         else { console.log("DELETE company error :( "); }
       });
       this.router.navigate(["/admin"]);
+  }
+
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
   }
 
 }

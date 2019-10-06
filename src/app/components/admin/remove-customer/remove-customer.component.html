@@ -1,17 +1,15 @@
-<p>
-  remove-customer works!
-</p>
+<button class="logout" (click)="logout()"> Logout </button>
 
 <div>
-    <h2>Which customer you want to delete??</h2>
-  
-    <div>
-      <input class="inputs" #customerID type="number" placeholder="Customer ID" maxlength="20" min="0">
-      <br>
-      <br>
-      <button class="buttons" (click)="deleteCustomer(customerID.value)">Delete!</button>
-    </div>
-  
+  <h2>Which customer you want to delete??</h2>
+
+  <div>
+    <input class="inputs" #customerID type="number" placeholder="Customer ID" maxlength="20" min="0">
+    <br>
+    <br>
+    <button class="buttons" (click)="deleteCustomer(customerID.value)">Delete!</button>
   </div>
 
-<a routerLink = '/admin'> Back to Admin menu</a>
+</div>
+
+<a routerLink='/admin'> Back to Admin menu</a>

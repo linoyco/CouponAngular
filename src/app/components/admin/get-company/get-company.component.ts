@@ -4,6 +4,7 @@ import { ResponseCodes } from 'src/app/models/responseCodeEnums';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ItemsService } from 'src/app/services/items.service';
 import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class GetCompanyComponent implements OnInit {
 
 
-  constructor(private companyBeanService: CompanyBeanService, private itemService : ItemsService, private router : Router) { }
+  constructor(private companyBeanService: CompanyBeanService, private itemService : ItemsService, private router : Router, private loginService: LoginServiceService) { }
 
   private company: any = {};
 
@@ -35,5 +36,8 @@ export class GetCompanyComponent implements OnInit {
     });
   }
 
-
+  private logout(){
+    this.loginService.logout();
+    this.router.navigate(["/login"]);
+  }
 }
