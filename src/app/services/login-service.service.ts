@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { UrlsServiceService } from './urls-service.service';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
 
-  constructor(private http: HttpClient, private urlsService: UrlsServiceService, private router: Router) { }
+  constructor(private http: HttpClient, private urlsService: UrlsServiceService) { }
 
-  private _urlLogin = 'http://localhost:8080/Login/login';
   public token: string = localStorage.getItem("token");
   private userAdmin = JSON.parse(localStorage.getItem("userAdmin") || 'false');
   private userCompany = JSON.parse(localStorage.getItem("userCompany") || 'false');
   private userCustomer = JSON.parse(localStorage.getItem("userCustomer") || 'false');
   private userName: string = JSON.parse(localStorage.getItem("username"));
 
-
-
   login(userName, password, cliantType): Observable<any> {
-    let url = this._urlLogin + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
+    let url = this.urlsService.getLoginUrl() + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
     console.log(url)
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
   //לעשות לוג אאוט
-  // public logout(): Observable<HttpResponse<object>> {
+  // public logout(): Observable<any> {
   //   let url = this.urlsService.getLogoutUrl();
-  //   return this.http.get(url, { observe: 'response' });
+  //   return this.http.get(url, { observe: 'response', responseType: 'text' });
   // }
 
   // GET&SET token
