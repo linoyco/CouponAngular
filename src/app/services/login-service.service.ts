@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpResponse } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { UrlsServiceService } from './urls-service.service';
-import { ResponseCodes } from '../models/responseCodeEnums';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,90 +10,45 @@ export class LoginServiceService {
 
   constructor(private http: HttpClient, private urlsService: UrlsServiceService, private router: Router) { }
 
-  private userInfo = null;
-
   private _urlLogin = 'http://localhost:8080/Login/login';
-
-  public token : string = localStorage.getItem("token");
-
+  public token: string = localStorage.getItem("token");
   private userAdmin = JSON.parse(localStorage.getItem("userAdmin") || 'false');
   private userCompany = JSON.parse(localStorage.getItem("userCompany") || 'false');
   private userCustomer = JSON.parse(localStorage.getItem("userCustomer") || 'false');
-  private userLogged = JSON.parse(localStorage.getItem("userLogged") || 'false');
   private userName: string = JSON.parse(localStorage.getItem("username"));
 
-  private updateOption = JSON.parse(localStorage.getItem("updateOption") || 'true');
-  private updateOptionButton: string = JSON.parse(localStorage.getItem("updateOptionButton"));
 
-  private notAllowed = "This user is not allowed to this page!";
-  private numberOfRetry = 1;
 
-  public getToken(){
+  login(userName, password, cliantType): Observable<any> {
+    let url = this._urlLogin + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
+    console.log(url)
+    return this.http.post(url, null, { observe: 'response', responseType: 'text' });
+  }
+
+  //לעשות לוג אאוט
+  // public logout(): Observable<HttpResponse<object>> {
+  //   let url = this.urlsService.getLogoutUrl();
+  //   return this.http.get(url, { observe: 'response' });
+  // }
+
+  // GET&SET token
+  public getToken() {
     return this.token;
   }
-  public setToken(token:string){
+  public setToken(token: string) {
     this.token = token;
   }
 
-  login(userName, password, cliantType): Observable<any>{
-    let url = this._urlLogin + '?name=' + userName + "&password=" + password + "&clientType=" + cliantType;
-    console.log(url)
-    return this.http.post(url, null, {observe : 'response', responseType: 'text'});
-  }
-
-  goodLogin(username: string) {
-    localStorage.setItem("userLogged", "true");
-    this.userLogged = JSON.parse(localStorage.getItem("userLogged") || 'false');
-    localStorage.setItem("username", JSON.stringify(username.charAt(0)));
-    this.userName = JSON.parse(localStorage.getItem("username"));
-  }
-
-
-  badLogin() {
-    localStorage.removeItem("userLogged");
-    this.userLogged = false;
-    localStorage.removeItem("username");
-    this.userName = "";
-    localStorage.removeItem("userAdmin");
-    this.userAdmin = false;
-    localStorage.removeItem("userCompany");
-    this.userCompany = false;
-    localStorage.removeItem("userCustomer");
-    this.userCustomer = false;
-
-    this.logout().subscribe(
-      res => {
-        if (res.status === ResponseCodes.OK) { this.router.navigate(["/"]) }
-      },
-      error => {
-        let res: HttpErrorResponse = error;
-        console.log("Error code: " + res.status);
-        console.log("Error Message: " + res.message);
-      });
-
-    alert("This user in not allowed with this option or session timeout");
-  }
-
-
-
-  public logout(): Observable<HttpResponse<object>> {
-    let url = this.urlsService.getLogoutUrl();
-    return this.http.get(url, { observe: 'response' });
-  }
-
-  getLogin() {
-    return this.userLogged;
-  }
-
+  // GET&SET admin user
   getAdminUser() {
     return this.userAdmin;
   }
-
   setAdminUser() {
     localStorage.setItem("userAdmin", "true");
     this.userAdmin = true;
   }
 
+  // GET&SET company user
   getCompanyUser() {
     return this.userCompany;
   }
@@ -105,6 +57,7 @@ export class LoginServiceService {
     this.userCompany = true;
   }
 
+  // GET&SET customer user
   getCustomerUser() {
     return this.userCustomer;
   }
@@ -113,88 +66,8 @@ export class LoginServiceService {
     this.userCustomer = true;
   }
 
+  // GET user name
   getUserName() {
     return this.userName;
   }
-
-  public getUpdateOptionButton() {
-    return this.updateOptionButton;
-  }
-  public getUpdateOption() {
-    return this.updateOption;
-  }
-  public setUpdateOption(flag) {
-    if (flag === true) {
-      localStorage.setItem("updateOption", "true");
-      this.updateOption = true;
-
-      localStorage.setItem("updateOptionButton", JSON.stringify("click to update Customer"));
-      this.updateOptionButton = "click to update Customer";
-    }
-    else {
-      localStorage.setItem("updateOption", "false");
-      this.updateOption = false;
-
-      localStorage.setItem("updateOptionButton", JSON.stringify("click to update Company"))
-      this.updateOptionButton = "click to update Company";
-    }
-  }
-
-  public getNotAllowed() {
-    return this.notAllowed;
-  }
-
-  // public login(username, password, clientType): Observable<HttpResponse<Object>> {
-
-  //   let user = { username: username, password: password, clientType: clientType };
-
-  //   console.log(user.username);
-  //   console.log(user.password);
-  //   console.log(user.clientType);
-  //   let url = this.urlsService.getLoginUrl();
-
-  //   return this.http.post(url, user, { observe: 'response' }).pipe(retry(this.numberOfRetry));
-  // }
-
-  public getUserInfo() {
-    return this.userInfo;
-  }
-  public setUserInfo(userObject) {
-    this.userInfo = userObject;
-  }
-
-  public checkInfo() {
-    if (this.userInfo === null) {
-      if (this.getCompanyUser()) {
-        let url = this.urlsService.getCompanyUrl() + "getThisCompany";
-
-        this.http.get(url, { observe: 'response' }).subscribe(
-          res => {
-            this.userInfo = res.body;
-          },
-          error => {
-            let res: HttpErrorResponse = error;
-            if (res.status === ResponseCodes.BAD_REQUEST || res.status === ResponseCodes.NO_CONTENT || res.status === ResponseCodes.UNAUTHORIZED) { console.log(res.message); this.badLogin(); }
-            else { console.log(res.message) }
-          });
-      }
-      else if (this.getCustomerUser()) {
-        let url = this.urlsService.getCustomerUrl() + "getThisCustomer";
-
-        this.http.get(url, { observe: 'response' }).subscribe(
-          res => {
-            this.userInfo = res.body;
-          },
-          error => {
-            let res: HttpErrorResponse = error;
-            if (res.status === ResponseCodes.BAD_REQUEST || res.status === ResponseCodes.NO_CONTENT || res.status === ResponseCodes.UNAUTHORIZED) { console.log(res.message); this.badLogin(); }
-            else { console.log(res.message) }
-          });
-      }
-      else {
-        this.badLogin();
-      }
-    }
-  }
-
 }
