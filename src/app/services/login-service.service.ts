@@ -23,9 +23,10 @@ export class LoginServiceService {
 
   public logout() {
     localStorage.setItem("token", null);
-    if (this.userAdmin === true) { this.setAdminUserF(); alert("good bye!"); }
-    if (this.userCompany === true) { this.setCompanyUserF(); alert("good bye!"); }
-    if (this.userCustomer === true) { this.setCustomerUserF(); alert("good bye!"); }
+    this.setAdminUserF();
+    this.setCompanyUserF(); 
+    this.setCustomerUserF();
+    alert("good bye!");
   }
 
   // GET&SET token
