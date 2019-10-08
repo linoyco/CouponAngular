@@ -1,5 +1,18 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  update-coupon works!
-</p>
+
+<h1>Update coupon</h1>
+
+<div>
+<input  class="inputs" #couponid type="number" placeholder="Coupon id" maxlength="20" min="0">
+<br><br>
+
+<input class="inputs" #endDate type="text" placeholder="New End Date">
+<br><br>
+
+<input class="inputs" #price type="text" placeholder="New Price">
+<br><br>
+
+<button (click)="updateCoupon(couponid.value, endDate.value, price.value)">Update!</button>
+
+</div>

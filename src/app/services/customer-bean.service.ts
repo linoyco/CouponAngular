@@ -26,12 +26,13 @@ export class CustomerBeanService {
     return this.http.post(url, customer, { observe: 'response', responseType: 'text' });
   }
 
-  //
+  //delete customer works!
   public deleteCustomer(customerID: number): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.deletecustomer + "/" + customerID + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
+  //update customer works!
   public updateCustomer(id, password): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.updatecustomer + "/" + this.loginService.token
       + "/?id=" + id + "&password=" + password;
@@ -44,10 +45,10 @@ export class CustomerBeanService {
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
+  //get all customer works!
   public getAllCustomers(): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getallcustomers + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
-
 
 }

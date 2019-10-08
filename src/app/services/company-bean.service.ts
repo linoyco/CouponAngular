@@ -38,7 +38,7 @@ export class CompanyBeanService {
   public updateCompany(id, password, email): Observable<any> {
 
     let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token
-      + "/?id=" + id + "&password=" + password + "&email=" + email;
+     + "/?id=" + id + "&password=" + password + "&email=" + email;
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 

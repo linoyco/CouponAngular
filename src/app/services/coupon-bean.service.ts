@@ -15,7 +15,7 @@ export class CouponBeanService {
   private createcoupon = "createCoupon";
   private deletecoupon = "deleteCoupon";
   private updatecoupon = "updateCoupon";
-  private getcoupon = "getCoupon";
+  // private getcoupon = "getCoupon";
   private getallcoupons = "getAllCoupons";
   private getcompany = "companyById";
   private purchasecoupon = "purchaseCoupon";
@@ -30,8 +30,8 @@ export class CouponBeanService {
     let endDate = new Date(EndDate).getTime();
 
     let coupon = {
-      id: 0, title: Title, startDate: StartDate,
-      endDate: EndDate, amount: Amount,
+      id: 0, title: Title, startDate: startDate,
+      endDate: endDate, amount: Amount,
       message: Message, price: Price,
       image: Image, type: Type
     };
@@ -47,18 +47,12 @@ export class CouponBeanService {
   }
 
   //update coupon
-  public updateCoupon(couponTitle, endDate, couponPrice): Observable<any> {
+  public updateCoupon(id, EndDate, price): Observable<any> {
 
-    let endTimestamp = new Date(endDate).getTime();
-
-    let coupon = {
-      id: 0, title: couponTitle, startDate: 0,
-      endDate: endTimestamp, amount: 0,
-      type: "", message: "",
-      price: couponPrice, image: ""
-    };
-    let url = this.urlsService.getCompanyUrl() + this.updatecoupon;
-    return this.http.put(url, coupon, { observe: 'response', responseType: 'text' });
+    let endDate = new Date(EndDate).getTime();
+    let url = this.urlsService.getCompanyUrl() + this.updatecoupon + "/" + this.loginService.token
+    + "/?id=" + id + "&endDate=" + EndDate + "&price=" + price;
+    return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
   //get all coupons works! 
