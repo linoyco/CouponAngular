@@ -17,7 +17,7 @@ export class CompanyBeanService {
   private getcompany = "companyById";
   private getallcompanies = "getAllCompanies";
 
-  //create company works
+  //create company works!
   public createCompany(CompanyName, Password, Email): Observable<any> {
     let company = {
       id: 0, companyName: CompanyName,
@@ -34,7 +34,7 @@ export class CompanyBeanService {
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
-  //update company works
+  //update company works!
   public updateCompany(id, password, email): Observable<any> {
 
     let url = this.urlsService.getAdminUrl() + this.updatecompany + "/" + this.loginService.token
@@ -42,12 +42,13 @@ export class CompanyBeanService {
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
-  //get company works
+  //get company works!
   public getCompany(id: number): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
+  //get all companies works!
   public getAllCompanies(): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getallcompanies + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });

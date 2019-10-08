@@ -12,35 +12,34 @@ export class CouponBeanService {
 
   constructor(private http: HttpClient, private urlsService: UrlsServiceService, private loginService: LoginServiceService) { }
 
-  private addcoupon = "createCoupon/";
-  private removecoupon = "deleteCoupon/";
-  private updatecoupon = "updateCoupon/";
+  private createcoupon = "createCoupon";
+  private deletecoupon = "deleteCoupon";
+  private updatecoupon = "updateCoupon";
   private getcoupon = "getCoupon";
   private getallcoupons = "getAllCoupons";
+  private getcompany = "companyById";
+  private purchasecoupon = "purchaseCoupon";
+  private getcouponsbycoupontype = "getCouponsByCouponType";
+  private getallcustomercoupons = "getAllCustomerCoupons";
+  private getcouponsbyprice = "getCouponsByPrice";
 
-  private purchasecoupon = "purchaseCoupon/";
-  private returnpurchasedcoupon = "returnPurchasedCoupon";
-  private getallpurchasedcoupons = "getAllCustomerCoupons/";
+  public createCoupon(Title, StartDate, EndDate, Amount, Message, Price, Image, Type): Observable<any> {
 
-  public addCoupon(Id, Title, startDate, endDate, Amount, Type, Message, Price, Image): Observable<any> {
-
-    let startTimestamp = new Date(startDate).getTime();
-    let endTimestamp = new Date(endDate).getTime();
+    let startDate = new Date(StartDate).getTime();
+    let endDate = new Date(EndDate).getTime();
 
     let coupon = {
-      id: Id, title: Title, startDate: startTimestamp,
-      endDate: endTimestamp, amount: Amount,
-      type: Type, message: Message,
-      price: Price, image: Image
+      id: 0, title: Title, startDate: StartDate,
+      endDate: EndDate, amount: Amount,
+      message: Message, price: Price,
+      image: Image, type: Type
     };
-
-    let url = this.urlsService.getCompanyUrl() + this.addcoupon;
-
+    let url = this.urlsService.getCompanyUrl() + this.createcoupon + "/" + this.loginService.token;
     return this.http.post(url, coupon, { observe: 'response', responseType: 'text' });
   }
 
   public removeCoupon(couponId): Observable<any> {
-    let url = this.urlsService.getCompanyUrl() + this.removecoupon + "?id=" + couponId;
+    let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "?id=" + couponId;
 
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
@@ -77,6 +76,12 @@ export class CouponBeanService {
   //     return this.http.get(this.urlsService.getAllCouponsUrl(), { observe: 'response', responseType: 'text' });
   //   }
   // }
+
+  //get company works!
+  public getCompany(id: number): Observable<any> {
+    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;
+    return this.http.get(url, { observe: 'response', responseType: 'text' });
+  }
 
   public purchaseCoupon(Id, Title, Amount): Observable<any> {
     let coupon = {
