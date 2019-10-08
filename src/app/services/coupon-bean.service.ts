@@ -39,10 +39,10 @@ export class CouponBeanService {
     return this.http.post(url, coupon, { observe: 'response', responseType: 'text' });
   }
 
-  //delete coupon
-  public removeCoupon(id: number): Observable<any> {
-    let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "?id=" + id;
+  //delete coupon works!
+  public deleteCoupon(id: number): Observable<any> {
 
+    let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "/" + id + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
@@ -61,27 +61,11 @@ export class CouponBeanService {
     return this.http.put(url, coupon, { observe: 'response', responseType: 'text' });
   }
 
-  // //get coupon
-  // public getCoupon(id: number): Observable<any> {
-  //   let url = this.urlsService.getCompanyUrl() + this.getcoupon + "/" + id + "/" + this.loginService.token;
-  //   return this.http.get(url, { observe: 'response', responseType: 'text' });
-  // }
-
-  //get all coupons 
+  //get all coupons works! 
   public getAllCoupons(): Observable<any> {
     let url = this.urlsService.getAdminUrl() + this.getallcoupons + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
-
-  // public getAllCoupons(): Observable<any> {
-  //   if (this.loginService.getCompanyUser()) {
-  //     let url = this.urlsService.getCompanyUrl() + this.getallcoupons;
-  //     return this.http.get(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
-  //   }else{
-
-  //     return this.http.get(this.urlsService.getAllCouponsUrl(), { observe: 'response', responseType: 'text' });
-  //   }
-  // }
 
   //get company works!
   public getCompany(id: number): Observable<any> {
@@ -96,9 +80,7 @@ export class CouponBeanService {
       type: "", message: "",
       price: 0, image: ""
     };
-
     let url = this.urlsService.getCustomerUrl() + this.purchasecoupon;
-
     return this.http.post(url, coupon, { observe: 'response', responseType: 'text' });
   }
 

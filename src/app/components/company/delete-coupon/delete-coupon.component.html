@@ -1,5 +1,14 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  delete-coupon works!
-</p>
+
+<div>
+    <h2>Which coupon you want to delete??</h2>
+  
+    <div>
+      <input class="inputs" #couponID type="number" placeholder="Coupon ID" maxlength="20" min="0">
+      <br>
+      <br>
+      <button class="buttons" (click)="deleteCoupon(couponID.value)">Delete!</button>
+    </div>
+  
+  </div>
