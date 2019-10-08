@@ -22,8 +22,6 @@ import { RemoveCustomerComponent } from './components/admin/remove-customer/remo
 import { UpdateCustomerComponent } from './components/admin/update-customer/update-customer.component';
 import { GetCustomerComponent } from './components/admin/get-customer/get-customer.component';
 import { GetAllCustomersComponent } from './components/admin/get-all-customers/get-all-customers.component';
-import { HttpClient } from '@angular/common/http';
-import { AdminServiceService } from './services/admin-service.service';
 import { HttpRequestInterceptor } from './HttpRequestInterceptor';
 import { GetAllIncomeComponent } from './components/admin/get-all-income/get-all-income.component';
 import { GetIncomeByCompanyIdComponent } from './components/admin/get-income-by-company-id/get-income-by-company-id.component';
@@ -41,7 +39,6 @@ import { PurchaseCouponComponent } from './components/customer/purchase-coupon/p
 import { GetAllCustomerCouponsComponent } from './components/customer/get-all-customer-coupons/get-all-customer-coupons.component';
 import { GetCouponsByTypeComponent } from './components/customer/get-coupons-by-type/get-coupons-by-type.component';
 import { GetCouponsByPriceComponent } from './components/customer/get-coupons-by-price/get-coupons-by-price.component';
-import { GetAllCouponsComponent } from './components/company/get-all-coupons/get-all-coupons.component';
 import { GetAllCouponssComponent } from './components/admin/get-all-couponss/get-all-couponss.component';
 
 @NgModule({
@@ -79,7 +76,6 @@ import { GetAllCouponssComponent } from './components/admin/get-all-couponss/get
     GetAllCustomerCouponsComponent,
     GetCouponsByTypeComponent,
     GetCouponsByPriceComponent,
-    GetAllCouponsComponent,
     GetAllCouponssComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
