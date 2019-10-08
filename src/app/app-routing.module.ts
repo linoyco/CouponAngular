@@ -33,6 +33,8 @@ import { ViewIncomeByCompanyIdComponent } from './components/company/view-income
 import { GetAllIncomeComponent } from './components/admin/get-all-income/get-all-income.component';
 import { GetIncomeByCompanyIdComponent } from './components/admin/get-income-by-company-id/get-income-by-company-id.component';
 import { GetIncomeByCustomerIdComponent } from './components/admin/get-income-by-customer-id/get-income-by-customer-id.component';
+import { GetAllCouponsComponent } from './components/company/get-all-coupons/get-all-coupons.component';
+import { GetAllCouponssComponent } from './components/admin/get-all-couponss/get-all-couponss.component';
 
 const routes: Routes = [
         //***global***
@@ -58,6 +60,7 @@ const routes: Routes = [
         { path: "admin/get-all-income", component: GetAllIncomeComponent },
         { path: "admin/get-income-by-company-id", component: GetIncomeByCompanyIdComponent },
         { path: "admin/get-income-by-customer-id", component: GetIncomeByCustomerIdComponent },
+        { path: "admin/get-all-couponss", component: GetAllCouponssComponent },
 
 
         //***company Router
@@ -70,6 +73,8 @@ const routes: Routes = [
         { path: "company/get-coupon-by-type", component: GetCouponByTypeComponent },
         { path: "company/update-coupon", component: UpdateCouponComponent },
         { path: "company/view-income-by-company-id", component: ViewIncomeByCompanyIdComponent },
+        { path: "company/get-all-coupons", component: GetAllCouponsComponent },
+
 
         //***customer Router
         { path: "customer/get-all-customer-coupons", component: GetAllCustomerCouponsComponent },

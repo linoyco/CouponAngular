@@ -23,6 +23,7 @@ export class CouponBeanService {
   private getallcustomercoupons = "getAllCustomerCoupons";
   private getcouponsbyprice = "getCouponsByPrice";
 
+  //create coupon works!
   public createCoupon(Title, StartDate, EndDate, Amount, Message, Price, Image, Type): Observable<any> {
 
     let startDate = new Date(StartDate).getTime();
@@ -38,12 +39,14 @@ export class CouponBeanService {
     return this.http.post(url, coupon, { observe: 'response', responseType: 'text' });
   }
 
-  public removeCoupon(couponId): Observable<any> {
-    let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "?id=" + couponId;
+  //delete coupon
+  public removeCoupon(id: number): Observable<any> {
+    let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "?id=" + id;
 
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
+  //update coupon
   public updateCoupon(couponTitle, endDate, couponPrice): Observable<any> {
 
     let endTimestamp = new Date(endDate).getTime();
@@ -54,22 +57,25 @@ export class CouponBeanService {
       type: "", message: "",
       price: couponPrice, image: ""
     };
-
     let url = this.urlsService.getCompanyUrl() + this.updatecoupon;
-
     return this.http.put(url, coupon, { observe: 'response', responseType: 'text' });
   }
 
-  public getCoupon(couponId): Observable<any> {
-    let url = this.urlsService.getCompanyUrl() + this.getcoupon + "?id=" + couponId;
+  // //get coupon
+  // public getCoupon(id: number): Observable<any> {
+  //   let url = this.urlsService.getCompanyUrl() + this.getcoupon + "/" + id + "/" + this.loginService.token;
+  //   return this.http.get(url, { observe: 'response', responseType: 'text' });
+  // }
 
+  //get all coupons 
+  public getAllCoupons(): Observable<any> {
+    let url = this.urlsService.getAdminUrl() + this.getallcoupons + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
   // public getAllCoupons(): Observable<any> {
   //   if (this.loginService.getCompanyUser()) {
   //     let url = this.urlsService.getCompanyUrl() + this.getallcoupons;
-
   //     return this.http.get(url, { observe: 'response' }).pipe(retry(this.numberOfRetry));
   //   }else{
 

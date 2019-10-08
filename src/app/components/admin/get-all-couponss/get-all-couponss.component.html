@@ -1,0 +1,34 @@
+<button class="logout" (click)="logout()"> Logout </button>
+<a class="backTo" routerLink='/company'> Back to company menu</a>
+<div>
+  <h2>View ALL coupons</h2>
+  <div>
+    <button class="buttons" (click)="getAllCoupons()">Show me all coupons!</button>
+  </div>
+  <br>
+  <div class="getInfoAll">
+    <ul *ngFor="let c of this.itemService.coupons">
+      <br>
+      <br>
+      Coupon ID: <span>{{c.id}}</span>
+      <br>
+      Title: <span>{{c.title}}</span>
+      <br>
+      Start Date: <span>{{c.startDate}}</span>
+      <br>
+      End Date: <span>{{c.endDate}}</span>
+      <br>
+      Amount: <span>{{c.amount}}</span>
+      <br>
+      Message: <span>{{c.message}}</span>
+      <br>
+      Price: <span>{{c.price}}</span>
+      <br>
+      Image: <span>{{c.image}}</span>
+      <br>
+      Coupon Type: <span>{{c.type}}</span>
+      <br>
+    </ul>
+  </div>
+  <br>
+</div>

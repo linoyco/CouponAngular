@@ -41,6 +41,8 @@ import { PurchaseCouponComponent } from './components/customer/purchase-coupon/p
 import { GetAllCustomerCouponsComponent } from './components/customer/get-all-customer-coupons/get-all-customer-coupons.component';
 import { GetCouponsByTypeComponent } from './components/customer/get-coupons-by-type/get-coupons-by-type.component';
 import { GetCouponsByPriceComponent } from './components/customer/get-coupons-by-price/get-coupons-by-price.component';
+import { GetAllCouponsComponent } from './components/company/get-all-coupons/get-all-coupons.component';
+import { GetAllCouponssComponent } from './components/admin/get-all-couponss/get-all-couponss.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { GetCouponsByPriceComponent } from './components/customer/get-coupons-by
     GetAllCustomerCouponsComponent,
     GetCouponsByTypeComponent,
     GetCouponsByPriceComponent,
+    GetAllCouponsComponent,
+    GetAllCouponssComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
   providers: [
