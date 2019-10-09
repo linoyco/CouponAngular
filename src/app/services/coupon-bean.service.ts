@@ -17,7 +17,6 @@ export class CouponBeanService {
   private updatecoupon = "updateCoupon";
   // private getcoupon = "getCoupon";
   private getallcoupons = "getAllCoupons";
-  private getcompany = "companyById";
   private purchasecoupon = "purchaseCoupon";
   private getcouponsbycoupontype = "getCouponsByCouponType";
   private getallcustomercoupons = "getAllCustomerCoupons";
@@ -25,7 +24,6 @@ export class CouponBeanService {
 
   //create coupon works!
   public createCoupon(Title, StartDate, EndDate, Amount, Message, Price, Image, Type): Observable<any> {
-
     let startDate = new Date(StartDate).getTime();
     let endDate = new Date(EndDate).getTime();
 
@@ -41,7 +39,6 @@ export class CouponBeanService {
 
   //delete coupon works!
   public deleteCoupon(id: number): Observable<any> {
-
     let url = this.urlsService.getCompanyUrl() + this.deletecoupon + "/" + id + "/" + this.loginService.token;
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
@@ -61,21 +58,11 @@ export class CouponBeanService {
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
-  //get company works!
-  public getCompany(id: number): Observable<any> {
-    let url = this.urlsService.getAdminUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;
-    return this.http.get(url, { observe: 'response', responseType: 'text' });
-  }
 
-  public purchaseCoupon(Id, Title, Amount): Observable<any> {
-    let coupon = {
-      id: Id, title: Title, startDate: 0,
-      endDate: 0, amount: Amount,
-      type: "", message: "",
-      price: 0, image: ""
-    };
-    let url = this.urlsService.getCustomerUrl() + this.purchasecoupon;
-    return this.http.post(url, coupon, { observe: 'response', responseType: 'text' });
+  //purchase coupon works!
+  public purchaseCoupon(id:number): Observable<any> {
+    let url = this.urlsService.getCustomerUrl() + this.purchasecoupon + "/" + id + "/" + this.loginService.token;
+    return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
 }

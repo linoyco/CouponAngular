@@ -1,5 +1,11 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/customer'> Back to Customer menu</a>
-<p>
-  purchase-coupon works!
-</p>
+
+<h1>purchase coupons !</h1>
+
+<div>
+  <input class="inputs" #couponID type="number" placeholder="Coupon ID" maxlength="20" min="0">
+  <br>
+  <br>
+  <button class="buttons" (click)="purchaseCoupon(couponID.value)">purchase this coupon!</button>
+</div>
