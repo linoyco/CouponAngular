@@ -24,7 +24,6 @@ export class GetAllCompaniesComponent implements OnInit {
       this.itemService.companies = JSON.parse(res.body); console.log(this.itemService.companies); }
       else { console.log("GET-ALL companies faild! :( "); }
       if (this.itemService.companies === null) { this.itemService.companies = []; console.log("No companies ! "); alert("No companies ! "); }
-
     },
       error =>{
         let resError: HttpErrorResponse = error;

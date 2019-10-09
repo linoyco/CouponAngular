@@ -21,6 +21,7 @@ export class ItemsService {
 
   customers = [];
 
+  incomes = [];
   
 
 
