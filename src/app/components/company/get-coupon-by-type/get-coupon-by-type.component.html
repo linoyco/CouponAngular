@@ -1,5 +1,45 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  get-coupon-by-type works!
-</p>
+
+<h1>View all coupons by type!</h1>
+
+<div>
+  <select class="inputs" #couponType type="text" placeholder="choose Coupon Type">
+    <option selected disabled>Select Coupon Type</option>
+    <option value="RESTURANTS">RESTURANTS</option>
+    <option value="ELECTRICITY">ELECTRICITY</option>
+    <option value="FOOD">FOOD</option>
+    <option value="HEALTH">HEALTH</option>
+    <option value="SPORTS">SPORTS</option>
+    <option value="CAMPING">CAMPING</option>
+    <option value="TRAVELING">TRAVELING</option>
+  </select>
+  <br><br>
+
+  <button class="buttons" (click)="getCouponsByCouponTypeForCompany(couponType.value)"> Show me my coupons</button>
+</div>
+
+<div class="getInfoAll">
+  <ul *ngFor="let c of this.itemService.coupons">
+    <br>
+    <br>
+    Coupon ID: <span>{{c.id}}</span>
+    <br>
+    Title: <span>{{c.title}}</span>
+    <br>
+    Start Date: <span>{{c.startDate}}</span>
+    <br>
+    End Date: <span>{{c.endDate}}</span>
+    <br>
+    Amount: <span>{{c.amount}}</span>
+    <br>
+    Message: <span>{{c.message}}</span>
+    <br>
+    Price: <span>{{c.price}}</span>
+    <br>
+    Image: <span>{{c.image}}</span>
+    <br>
+    Coupon Type: <span>{{c.type}}</span>
+    <br>
+  </ul>
+</div>

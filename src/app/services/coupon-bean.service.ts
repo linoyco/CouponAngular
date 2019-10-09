@@ -81,4 +81,15 @@ export class CouponBeanService {
     return this.http.get(url,{ observe:'response', responseType:'text' });
   }
 
+    //get coupons by coupon type for company
+    public getCouponsByCouponTypeForCompany(couponType): Observable<any> {
+      let url = this.urlsService.getCompanyUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
+      return this.http.get(url,{ observe:'response', responseType:'text' });
+    }
+  
+    //get coupons by price for company
+    public getCouponsByPriceForCompany(price: number): Observable<any> {
+      let url = this.urlsService.getCompanyUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
+      return this.http.get(url,{ observe:'response', responseType:'text' });
+    }
 }
