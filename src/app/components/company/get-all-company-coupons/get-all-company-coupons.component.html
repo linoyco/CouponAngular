@@ -1,5 +1,33 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  get-all-company-coupons works!
-</p>
+
+<h1>View all coupons by company id!</h1>
+
+
+<input class="inputs" #company_id type="number" placeholder="Company id" maxlength="20" min="0">
+<button class="buttons" (click)="getAllCompanyCoupons(company_id.value)"> Show me coupons</button>
+
+<div class="getInfoAll">
+  <ul *ngFor="let c of this.itemService.coupons">
+    <br>
+    <br>
+    Coupon ID: <span>{{c.id}}</span>
+    <br>
+    Title: <span>{{c.title}}</span>
+    <br>
+    Start Date: <span>{{c.startDate}}</span>
+    <br>
+    End Date: <span>{{c.endDate}}</span>
+    <br>
+    Amount: <span>{{c.amount}}</span>
+    <br>
+    Message: <span>{{c.message}}</span>
+    <br>
+    Price: <span>{{c.price}}</span>
+    <br>
+    Image: <span>{{c.image}}</span>
+    <br>
+    Coupon Type: <span>{{c.type}}</span>
+    <br>
+  </ul>
+</div>

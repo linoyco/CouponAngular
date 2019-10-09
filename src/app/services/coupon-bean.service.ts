@@ -21,6 +21,7 @@ export class CouponBeanService {
   private getcouponsbycoupontype = "getCouponsByCouponType";
   private getallcustomercoupons = "getAllCustomerCoupons";
   private getcouponsbyprice = "getCouponsByPrice";
+  private getallcompanycoupons = "getAllCompanyCoupons";
 
   //create coupon works!
   public createCoupon(Title, StartDate, EndDate, Amount, Message, Price, Image, Type): Observable<any> {
@@ -66,30 +67,36 @@ export class CouponBeanService {
   //get all customer coupons works!
   public getAllCustomerCoupons(id:number): Observable<any> {
     let url = this.urlsService.getCustomerUrl() + this.getallcustomercoupons + "/" + id + "/" + this.loginService.token;
-    return this.http.get(url,{ observe:'response', responseType:'text' });
+    return this.http.get(url, { observe:'response', responseType:'text' });
   }
 
   //get coupons by coupon type works!
   public getCouponsByCouponType(couponType): Observable<any> {
     let url = this.urlsService.getCustomerUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
-    return this.http.get(url,{ observe:'response', responseType:'text' });
+    return this.http.get(url, { observe:'response', responseType:'text' });
   }
 
   //get coupons by price works!
   public getCouponsByPrice(price: number): Observable<any> {
     let url = this.urlsService.getCustomerUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
-    return this.http.get(url,{ observe:'response', responseType:'text' });
+    return this.http.get(url, { observe:'response', responseType:'text' });
   }
 
     //get coupons by coupon type for company works!
     public getCouponsByCouponTypeForCompany(couponType): Observable<any> {
       let url = this.urlsService.getCompanyUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
-      return this.http.get(url,{ observe:'response', responseType:'text' });
+      return this.http.get(url, { observe:'response', responseType:'text' });
     }
   
     //get coupons by price for company works!
     public getCouponsByPriceForCompany(price: number): Observable<any> {
       let url = this.urlsService.getCompanyUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
-      return this.http.get(url,{ observe:'response', responseType:'text' });
+      return this.http.get(url, { observe:'response', responseType:'text' });
+    }
+
+    //get all company coupons works!
+    public getAllCompanyCoupons(id:number): Observable<any> {
+      let url = this.urlsService.getCompanyUrl() + this.getallcompanycoupons + "/" + id + "/" + this.loginService.token;
+      return this.http.get(url, { observe:'response', responseType:'text' });
     }
 }
