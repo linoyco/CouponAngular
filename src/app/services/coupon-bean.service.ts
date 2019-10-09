@@ -45,7 +45,6 @@ export class CouponBeanService {
 
   //update coupon works!
   public updateCoupon(id, EndDate, price): Observable<any> {
-
     let endDate = new Date(EndDate).getTime();
     let url = this.urlsService.getCompanyUrl() + this.updatecoupon + "/" + this.loginService.token
     + "/?id=" + id + "&endDate=" + EndDate + "&price=" + price;
@@ -57,7 +56,6 @@ export class CouponBeanService {
     let url = this.urlsService.getAdminUrl() + this.getallcoupons + "/" + this.loginService.token;
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
-
 
   //purchase coupon works!
   public purchaseCoupon(id:number): Observable<any> {
@@ -72,14 +70,15 @@ export class CouponBeanService {
   }
 
   //get coupons by coupon type
-  public getCouponsByCouponType(){
-
+  public getCouponsByCouponType(couponType): Observable<any> {
+    let url = this.urlsService.getCustomerUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
+    return this.http.get(url,{ observe:'response', responseType:'text' });
   }
 
   //get coupons by price
-  public getCouponsByPrice(){
-
+  public getCouponsByPrice(price: number): Observable<any> {
+    let url = this.urlsService.getCustomerUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
+    return this.http.get(url,{ observe:'response', responseType:'text' });
   }
-
 
 }
