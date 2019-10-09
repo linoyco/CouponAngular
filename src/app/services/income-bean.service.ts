@@ -23,12 +23,16 @@ export class IncomeBeanService {
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
-  public getAllIncomeByCompanyId(){
-
+  //get all income by company id works!
+  public getAllIncomeByCompanyId(id: number):Observable<any> {
+    let url = this.urlsService.getAdminUrl() + this.getallincomebycompanyid + "/" + id + "/" + this.loginService.token;
+    return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
-  public getAllIncomeByCustomerId(){
-
+  //get all income by customer id works!
+  public getAllIncomeByCustomerId(id: number):Observable<any> {
+    let url = this.urlsService.getAdminUrl() + this.getallincomebycustomerid + "/" + id + "/" + this.loginService.token;
+    return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
 }

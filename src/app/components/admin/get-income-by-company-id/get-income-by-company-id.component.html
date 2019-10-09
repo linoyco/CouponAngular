@@ -1,6 +1,30 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/admin'> Back to Admin menu</a>
 
-<p>
-  get-income-by-company-id works!
-</p>
+<div>
+  <h2>View ALL incomes by company id</h2>
+  <div>
+    <input class="inputs" #companyID type="number" placeholder="Company ID" maxlength="20" min="0">
+    <button class="buttons" (click)="getAllIncomeByCompanyId(companyID.value)">Show me all incomes by this company id!</button>
+  </div>
+  <br>
+  <div class="getInfoAll">
+    <ul *ngFor="let i of this.itemService.incomes">
+      <br>
+      <br>
+      Income ID: <span>{{i.incomeId}}</span>
+      <br>
+      Client Name: <span>{{i.clientId}}</span>
+      <br>
+      Name: <span>{{i.name}}</span>
+      <br>
+      Date: <span>{{i.date}}</span>
+      <br>
+      Description: <span>{{i.description}}</span>
+      <br>
+      Amount: <span>{{i.amount}}</span>
+      <br>
+    </ul>
+  </div>
+  <br>
+</div>
