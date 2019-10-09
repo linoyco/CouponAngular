@@ -1,5 +1,34 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  get-coupon-by-price works!
-</p>
+
+<h1>View all coupons by price!</h1>
+
+
+<input class="inputs" #price type="number" placeholder="$ Max price $" maxlength="20" min="0">
+<br><br>
+<button class="buttons" (click)="getCouponsByPriceForCompany(price.value)"> Show me coupons</button>
+
+<div class="getInfoAll">
+  <ul *ngFor="let c of this.itemService.coupons">
+    <br>
+    <br>
+    Coupon ID: <span>{{c.id}}</span>
+    <br>
+    Title: <span>{{c.title}}</span>
+    <br>
+    Start Date: <span>{{c.startDate}}</span>
+    <br>
+    End Date: <span>{{c.endDate}}</span>
+    <br>
+    Amount: <span>{{c.amount}}</span>
+    <br>
+    Message: <span>{{c.message}}</span>
+    <br>
+    Price: <span>{{c.price}}</span>
+    <br>
+    Image: <span>{{c.image}}</span>
+    <br>
+    Coupon Type: <span>{{c.type}}</span>
+    <br>
+  </ul>
+</div>

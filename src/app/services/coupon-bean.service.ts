@@ -69,25 +69,25 @@ export class CouponBeanService {
     return this.http.get(url,{ observe:'response', responseType:'text' });
   }
 
-  //get coupons by coupon type
+  //get coupons by coupon type works!
   public getCouponsByCouponType(couponType): Observable<any> {
     let url = this.urlsService.getCustomerUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
     return this.http.get(url,{ observe:'response', responseType:'text' });
   }
 
-  //get coupons by price
+  //get coupons by price works!
   public getCouponsByPrice(price: number): Observable<any> {
     let url = this.urlsService.getCustomerUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
     return this.http.get(url,{ observe:'response', responseType:'text' });
   }
 
-    //get coupons by coupon type for company
+    //get coupons by coupon type for company works!
     public getCouponsByCouponTypeForCompany(couponType): Observable<any> {
       let url = this.urlsService.getCompanyUrl() + this.getcouponsbycoupontype + "/" + couponType + "/" + this.loginService.token;
       return this.http.get(url,{ observe:'response', responseType:'text' });
     }
   
-    //get coupons by price for company
+    //get coupons by price for company works!
     public getCouponsByPriceForCompany(price: number): Observable<any> {
       let url = this.urlsService.getCompanyUrl() + this.getcouponsbyprice + "/" + price + "/" + this.loginService.token;
       return this.http.get(url,{ observe:'response', responseType:'text' });
