@@ -46,7 +46,7 @@ export class CouponBeanService {
     return this.http.delete(url, { observe: 'response', responseType: 'text' });
   }
 
-  //update coupon
+  //update coupon works!
   public updateCoupon(id, EndDate, price): Observable<any> {
 
     let endDate = new Date(EndDate).getTime();

@@ -1,5 +1,27 @@
 <button class="logout" (click)="logout()"> Logout </button>
 <a class="backTo" routerLink='/company'> Back to Company menu</a>
-<p>
-  get-company-by-id works!
-</p>
+<div>
+    <h2>View Company</h2>
+  
+    <div>
+      <input class="inputs" #companyID type="number" placeholder="Company ID" maxlength="20" min="0">
+      <br>
+      <br>
+      <button class="buttons" (click)="getCompanyById(companyID.value)">Show me this company!</button>
+  
+    </div>
+  
+    <br>
+    <br>
+    <div class="getInfoOne">
+      Company ID: <span>{{itemService.company.id}}</span>
+      <br>
+      Company Name: <span>{{itemService.company.companyName}}</span>
+      <br>
+      Company Password: <span>{{itemService.company.password}}</span>
+      <br>
+      Company Email: <span>{{itemService.company.email}}</span>
+      <br>
+    </div>
+    <br>
+  </div>

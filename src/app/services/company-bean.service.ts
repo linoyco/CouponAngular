@@ -54,4 +54,10 @@ export class CompanyBeanService {
     return this.http.get(url, { observe: 'response', responseType: 'text' });
   }
 
+  //get company by id for company type
+  public getCompanyById(id: number): Observable<any> {
+    let url = this.urlsService.getCompanyUrl() + this.getcompany + "/" + id + "/" + this.loginService.token;
+    return this.http.get(url, { observe: 'response', responseType: 'text' });
+  }
+
 }
