@@ -65,4 +65,21 @@ export class CouponBeanService {
     return this.http.post(url, null, { observe: 'response', responseType: 'text' });
   }
 
+  //get all customer coupons works!
+  public getAllCustomerCoupons(id:number): Observable<any> {
+    let url = this.urlsService.getCustomerUrl() + this.getallcustomercoupons + "/" + id + "/" + this.loginService.token;
+    return this.http.get(url,{ observe:'response', responseType:'text' });
+  }
+
+  //get coupons by coupon type
+  public getCouponsByCouponType(){
+
+  }
+
+  //get coupons by price
+  public getCouponsByPrice(){
+
+  }
+
+
 }

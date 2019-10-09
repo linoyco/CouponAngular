@@ -22,10 +22,7 @@ export class GetAllCouponssComponent implements OnInit {
   public getAllCoupons() {
     this.couponBeanService.getAllCoupons().subscribe(res => {
       if (res.status === ResponseCodes.OK) { console.log("GET-ALL coupons success! :) ");
-      this.itemService.coupons = JSON.parse(res.body);
-      console.log(this.itemService.coupons);
-
-       }
+      this.itemService.coupons = JSON.parse(res.body); console.log(this.itemService.coupons); }
       else { console.log("GET-ALL coupons faild! :( "); }
       if (this.itemService.coupons === null) { this.itemService.coupons = []; console.log("No coupons ! "); alert("No coupons ! "); }
 
