@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import{HttpClientModule, HTTP_INTERCEPTORS}from "@angular/common/http";
+import{HttpClientModule}from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 
 
@@ -22,7 +22,6 @@ import { RemoveCustomerComponent } from './components/admin/remove-customer/remo
 import { UpdateCustomerComponent } from './components/admin/update-customer/update-customer.component';
 import { GetCustomerComponent } from './components/admin/get-customer/get-customer.component';
 import { GetAllCustomersComponent } from './components/admin/get-all-customers/get-all-customers.component';
-import { HttpRequestInterceptor } from './HttpRequestInterceptor';
 import { GetAllIncomeComponent } from './components/admin/get-all-income/get-all-income.component';
 import { GetIncomeByCompanyIdComponent } from './components/admin/get-income-by-company-id/get-income-by-company-id.component';
 import { GetIncomeByCustomerIdComponent } from './components/admin/get-income-by-customer-id/get-income-by-customer-id.component';
@@ -79,10 +78,7 @@ import { GetAllCouponssComponent } from './components/admin/get-all-couponss/get
     GetAllCouponssComponent,
   ],
   imports: [BrowserModule, AppRoutingModule,  HttpClientModule, FormsModule],
-  providers: [
-    // AdminServiceService
-    { provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true }
-  ],
+  providers: [ ],
   bootstrap: [RootPageComponent]
 })
 export class AppModule { }
