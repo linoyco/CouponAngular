@@ -4,6 +4,9 @@
     <form (ngSubmit)="onSubmit()" #f="ngForm" action="login" method="post">
         <br>
       <p id="pp">Please enter a username and password:</p>
+
+<div id="divcenter">
+      <div id="lableR">
       <label for id="name">Name: </label>
       <input type="text" id="username" ngModel name="username" required  placeholder="Enter Your Name...">
     <br>
@@ -18,7 +21,9 @@
       <option value="COMPANY">COMPANY</option>
       <option value="CUSTOMER">CUSTOMER</option>
       </select>
-    
+    </div>
+  </div>
+
       <h3><button type="submit" class="button">LOGIN 	<i class="fa fa-user-circle-o" style="font-size:30px;"></i></button>
       <button type="reset" class="button"	>RESET	<i class="fa fa-eraser" style="font-size:30px;"></i></button></h3>
     

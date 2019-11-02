@@ -2,37 +2,34 @@
 
 section{
     height: 100%;
-    /* border: 2px solid black;  */
-    /* text-align: center; */
     box-sizing: border-box;
     font-size:25px;
 }
-
-/* #loginForm{
-    right:20px;
-} */
+/* -------div center but text left--------- */
+#divcenter{
+    margin-left: 150px;
+    text-align: center;
+}
+#lableR{
+  text-align: justify;
+}
 
 #name {
-    
     color: rgb(0, 0, 0);
     font-family:aharoni;
 }
-
 #password{
     color: rgb(0, 0, 0);
     font-family:aharoni;
 }
-
 #type1{
     color: rgb(0, 0, 0);
     font-family:aharoni;
 }
-
 #pp{
     font-family:  Arial, Helvetica, sans-serif ;
     font-weight: bold;
 }
-
 img:hover{
 	filter: grayscale(50%);
 }
