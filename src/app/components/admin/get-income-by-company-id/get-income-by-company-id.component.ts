@@ -24,7 +24,7 @@ export class GetIncomeByCompanyIdComponent implements OnInit {
       this.itemService.incomes = JSON.parse(res.body); console.log(this.itemService.incomes); }
         else { console.log("GET-ALL IncomeByCompanyId faild! :( "); }
       if (this.itemService.incomes === null) { console.log("No IncomeByCompanyId ! "); alert("No IncomeByCompanyId ! "); this.itemService.incomes = []; }
-       else { console.log("No IncomeByCompanyId ! "); alert("No IncomeByCompanyId ! "); }
+       else { console.log("") }
     },
     error=>{
       let resError: HttpErrorResponse = error;

@@ -24,7 +24,7 @@ export class GetIncomeByCustomerIdComponent implements OnInit {
       this.itemService.incomes = JSON.parse(res.body); console.log(this.itemService.incomes); }
         else { console.log("GET-ALL IncomeByCustomerId faild! :( "); }
       if (this.itemService.incomes === null) { console.log("No IncomeByCustomerId ! "); alert("No IncomeByCustomerId ! "); this.itemService.incomes = []; }
-       else { console.log("No IncomeByCustomerId ! "); alert("No IncomeByCustomerId ! "); }
+       else { console.log(" ");  }
     },
     error=>{
       let resError: HttpErrorResponse = error;
